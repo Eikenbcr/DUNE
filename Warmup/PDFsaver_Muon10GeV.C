@@ -30,27 +30,27 @@ void PDFsaver_Muon10GeV::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
 
-Muon_PositionX = new TH1D("Muon X Position","", 10, 119, 121);
+Muon_PositionX = new TH1D("Muon X Position","", 50, 119, 121);
 Muon_PositionX->GetXaxis()->SetTitle("X Position (cm)");
 Muon_PositionX->GetYaxis()->SetTitle("Events / (0.2 cm)");
-Muon_PositionY = new TH1D("Muon Y Position","", 10, -1, 1);
+Muon_PositionY = new TH1D("Muon Y Position","", 50, -1, 1);
 Muon_PositionY->GetXaxis()->SetTitle("Y Position (cm)");
 Muon_PositionY->GetYaxis()->SetTitle("Events / (0.2 cm)");
-Muon_PositionZ = new TH1D("Muon Z Position","", 250, 50, 300);
+Muon_PositionZ = new TH1D("Muon Z Position","", 125, 50, 300);
 Muon_PositionZ->GetXaxis()->SetTitle("Z Position (cm)");
-Muon_PositionZ->GetYaxis()->SetTitle("Events / (1.0 cm)");
+Muon_PositionZ->GetYaxis()->SetTitle("Events / (2.0 cm)");
 
-Muon_MomentumX = new TH1D("Muon X Position","", 10, -1, 1);
+Muon_MomentumX = new TH1D("Muon X Momentum","", 50, -1, 1);
 Muon_MomentumX->GetXaxis()->SetTitle("X Momentum (MeV/c)");
 Muon_MomentumX->GetYaxis()->SetTitle("Events / (0.2 MeV/c)");
-Muon_MomentumY = new TH1D("Muon Y Position","", 10, 10104, 10106);
+Muon_MomentumY = new TH1D("Muon Y Momentum","", 50, 10104, 10106);
 Muon_MomentumY->GetXaxis()->SetTitle("Y Momentum (MeV/c)");
 Muon_MomentumY->GetYaxis()->SetTitle("Events / (0.2 MeV/c)");
-Muon_MomentumZ = new TH1D("Muon Z Position","", 10, -1, 1);
+Muon_MomentumZ = new TH1D("Muon Z Momentum","", 50, -1, 1);
 Muon_MomentumZ->GetXaxis()->SetTitle("Z Momentum (MeV/c)");
 Muon_MomentumZ->GetYaxis()->SetTitle("Events / (0.2 MeV/c)");
 
-Muon_Energy = new TH1D("Muon Y Position","", 10, 10104, 10106);
+Muon_Energy = new TH1D("Muon Energy","", 50, 10104, 10106);
 Muon_Energy->GetXaxis()->SetTitle("Energy (MeV)");
 Muon_Energy->GetYaxis()->SetTitle("Events / (0.2 MeV)");
 
@@ -88,7 +88,6 @@ void PDFsaver_Muon10GeV::SlaveTerminate()
 void PDFsaver_Muon10GeV::Terminate()
 {
 
-  gStyle->SetOptStat(11);
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
 
@@ -143,6 +142,7 @@ Muon_MomentumY->GetXaxis()->SetTitleOffset(1.5);
 Muon_MomentumY->GetXaxis()->SetLabelSize(0.05);
 Muon_MomentumY->GetYaxis()->SetTitleSize(20);
 Muon_MomentumY->GetYaxis()->SetTitleFont(43);
+Muon_MomentumY->GetYaxis()->SetLabelSize(0.05);
 Muon_MomentumY->GetYaxis()->SetLabelSize(0.05);
 Muon_MomentumY->Draw();
 c1->SaveAs("Muon_MomentumY.pdf");
