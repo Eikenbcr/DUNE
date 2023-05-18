@@ -101,7 +101,8 @@ Muon_PositionX->GetYaxis()->SetTitleFont(43);
 Muon_PositionX->GetYaxis()->SetLabelSize(0.05);
 Muon_PositionX->Draw();
 c1->SaveAs("Muon_PositionX.pdf");
-
+c1->SaveAs("Muon_PositionX.png");
+   
 Muon_PositionY->GetXaxis()->CenterTitle(true);
 Muon_PositionY->GetXaxis()->SetTitleSize(20);
 Muon_PositionY->GetXaxis()->SetTitleFont(43);
@@ -112,7 +113,8 @@ Muon_PositionY->GetYaxis()->SetTitleFont(43);
 Muon_PositionY->GetYaxis()->SetLabelSize(0.05);
 Muon_PositionY->Draw();
 c1->SaveAs("Muon_PositionY.pdf");
-
+c1->SaveAs("Muon_PositionY.png");
+   
 Muon_PositionZ->GetXaxis()->CenterTitle(true);
 Muon_PositionZ->GetXaxis()->SetTitleSize(20);
 Muon_PositionZ->GetXaxis()->SetTitleFont(43);
@@ -123,7 +125,8 @@ Muon_PositionZ->GetYaxis()->SetTitleFont(43);
 Muon_PositionZ->GetYaxis()->SetLabelSize(0.05);
 Muon_PositionZ->Draw();
 c1->SaveAs("Muon_PositionZ.pdf");
-
+c1->SaveAs("Muon_PositionZ.png");
+   
 Muon_MomentumX->GetXaxis()->CenterTitle(true);
 Muon_MomentumX->GetXaxis()->SetTitleSize(20);
 Muon_MomentumX->GetXaxis()->SetTitleFont(43);
@@ -134,7 +137,8 @@ Muon_MomentumX->GetYaxis()->SetTitleFont(43);
 Muon_MomentumX->GetYaxis()->SetLabelSize(0.05);
 Muon_MomentumX->Draw();
 c1->SaveAs("Muon_MomentumX.pdf");
-
+c1->SaveAs("Muon_MomentumX.png");
+   
 Muon_MomentumY->GetXaxis()->CenterTitle(true);
 Muon_MomentumY->GetXaxis()->SetTitleSize(20);
 Muon_MomentumY->GetXaxis()->SetTitleFont(43);
@@ -147,7 +151,8 @@ Muon_MomentumY->GetYaxis()->SetLabelSize(0.05);
 Muon_MomentumY->GetXaxis()->SetNdivisions(5);   
 Muon_MomentumY->Draw();
 c1->SaveAs("Muon_MomentumY.pdf");
-
+c1->SaveAs("Muon_MomentumY.png");
+   
 Muon_MomentumZ->GetXaxis()->CenterTitle(true);
 Muon_MomentumZ->GetXaxis()->SetTitleSize(20);
 Muon_MomentumZ->GetXaxis()->SetTitleFont(43);
@@ -158,7 +163,8 @@ Muon_MomentumZ->GetYaxis()->SetTitleFont(43);
 Muon_MomentumZ->GetYaxis()->SetLabelSize(0.05);
 Muon_MomentumZ->Draw();
 c1->SaveAs("Muon_MomentumZ.pdf");
-
+c1->SaveAs("Muon_MomentumZ.png");
+   
 Muon_Energy->GetXaxis()->CenterTitle(true);
 Muon_Energy->GetXaxis()->SetTitleSize(20);
 Muon_Energy->GetXaxis()->SetTitleFont(43);
@@ -170,4 +176,5 @@ Muon_Energy->GetYaxis()->SetLabelSize(0.05);
 Muon_Energy->GetXaxis()->SetNdivisions(5);
 Muon_Energy->Draw();
 c1->SaveAs("Muon_Energy.pdf");
+c1->SaveAs("Muon_Energy.png");   
 }
