@@ -43,14 +43,14 @@ Muon_PositionZ->GetYaxis()->SetTitle("Events / (2.0 cm)");
 Muon_MomentumX = new TH1D("Muon X Momentum","", 50, -1, 1);
 Muon_MomentumX->GetXaxis()->SetTitle("X Momentum (MeV/c)");
 Muon_MomentumX->GetYaxis()->SetTitle("Events / (0.2 MeV/c)");
-Muon_MomentumY = new TH1D("Muon Y Momentum","", 50, 10104, 10106);
+Muon_MomentumY = new TH1D("Muon Y Momentum","", 50, 10105, 10107);
 Muon_MomentumY->GetXaxis()->SetTitle("Y Momentum (MeV/c)");
 Muon_MomentumY->GetYaxis()->SetTitle("Events / (0.2 MeV/c)");
 Muon_MomentumZ = new TH1D("Muon Z Momentum","", 50, -1, 1);
 Muon_MomentumZ->GetXaxis()->SetTitle("Z Momentum (MeV/c)");
 Muon_MomentumZ->GetYaxis()->SetTitle("Events / (0.2 MeV/c)");
 
-Muon_Energy = new TH1D("Muon Energy","", 50, 10104, 10106);
+Muon_Energy = new TH1D("Muon Energy","", 50, 10105, 10107);
 Muon_Energy->GetXaxis()->SetTitle("Energy (MeV)");
 Muon_Energy->GetYaxis()->SetTitle("Events / (0.2 MeV)");
 
