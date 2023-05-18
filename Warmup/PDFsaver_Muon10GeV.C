@@ -144,6 +144,7 @@ Muon_MomentumY->GetYaxis()->SetTitleSize(20);
 Muon_MomentumY->GetYaxis()->SetTitleFont(43);
 Muon_MomentumY->GetYaxis()->SetLabelSize(0.05);
 Muon_MomentumY->GetYaxis()->SetLabelSize(0.05);
+Muon_MomentumY->GetXaxis()->SetNdivisions(5);   
 Muon_MomentumY->Draw();
 c1->SaveAs("Muon_MomentumY.pdf");
 
@@ -166,6 +167,7 @@ Muon_Energy->GetXaxis()->SetLabelSize(0.05);
 Muon_Energy->GetYaxis()->SetTitleSize(20);
 Muon_Energy->GetYaxis()->SetTitleFont(43);
 Muon_Energy->GetYaxis()->SetLabelSize(0.05);
+Muon_Energy->GetXaxis()->SetNdivisions(5);
 Muon_Energy->Draw();
 c1->SaveAs("Muon_Energy.pdf");
 }
