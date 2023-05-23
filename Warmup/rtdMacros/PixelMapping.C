@@ -61,7 +61,7 @@ Pixel_Mapping->GetXaxis()->SetLabelSize(0.05);
 Pixel_Mapping->GetYaxis()->SetTitleSize(20);
 Pixel_Mapping->GetYaxis()->SetTitleFont(43);
 Pixel_Mapping->GetYaxis()->SetLabelSize(0.05);
-Pixel_Mapping->Draw();
+Pixel_Mapping->Draw("COLZ");
 c1->SaveAs("Pixel_Mapping.pdf");
 c1->SaveAs("Pixel_Mapping.png");
     
