@@ -52,7 +52,6 @@ void PixelMapping::Terminate()
   gStyle->SetNumberContours(2);
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
-  c1->SetGrid();   
    
 Pixel_Mapping->GetXaxis()->CenterTitle(true);
 Pixel_Mapping->GetXaxis()->SetTitleSize(20);
@@ -62,17 +61,15 @@ Pixel_Mapping->GetXaxis()->SetLabelSize(0.05);
 Pixel_Mapping->GetYaxis()->SetTitleSize(20);
 Pixel_Mapping->GetYaxis()->SetTitleFont(43);
 Pixel_Mapping->GetYaxis()->SetLabelSize(0.05);
-Pixel_Mapping->GetXaxis()->SetNdivisions(250);
-Pixel_Mapping->GetYaxis()->SetNdivisions(250);
 Pixel_Mapping->GetZaxis()->SetNdivisions(1);      
 Pixel_Mapping->GetZaxis()->SetNdivisions(1);   
-Pixel_Mapping->Draw("colz1");
+Pixel_Mapping->Draw("colz");
    
  gPad->Update();
    TPaletteAxis *palette = (TPaletteAxis*)Pixel_Mapping->GetListOfFunctions()->FindObject("palette");   
-  palette->SetX1NDC(0.9);
+  palette->SetX1NDC(0.93);
    palette->SetX2NDC(0.95);
-   palette->SetY1NDC(0.0);
+   palette->SetY1NDC(0.3);
    palette->SetY2NDC(0.5);
    gPad->Modified();
    gPad->Update();
