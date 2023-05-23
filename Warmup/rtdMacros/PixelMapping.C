@@ -69,7 +69,7 @@ Pixel_Mapping->GetZaxis()->SetNdivisions(1);
 Pixel_Mapping->Draw("colz1");
    
  gPad->Update();
-   TPaletteAxis *palette = (TPaletteAxis*)my2dhisto->GetListOfFunctions()->FindObject("palette");   
+   TPaletteAxis *palette = (TPaletteAxis*)Pixel_Mapping->GetListOfFunctions()->FindObject("palette");   
   palette->SetX1NDC(0.9);
    palette->SetX2NDC(0.95);
    palette->SetY1NDC(0.0);
