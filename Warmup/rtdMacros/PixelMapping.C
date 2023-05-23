@@ -49,7 +49,7 @@ void PixelMapping::SlaveTerminate()
 
 void PixelMapping::Terminate()
 {
-
+  gStyle->SetNumberContours(2);
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
    
@@ -61,7 +61,6 @@ Pixel_Mapping->GetXaxis()->SetLabelSize(0.05);
 Pixel_Mapping->GetYaxis()->SetTitleSize(20);
 Pixel_Mapping->GetYaxis()->SetTitleFont(43);
 Pixel_Mapping->GetYaxis()->SetLabelSize(0.05);
-Pixel_Mapping->SetNumberContours(2);
 Pixel_Mapping->Draw("COLZ");
 c1->SaveAs("Pixel_Mapping.pdf");
 c1->SaveAs("Pixel_Mapping.png");
