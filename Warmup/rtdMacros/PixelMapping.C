@@ -24,9 +24,9 @@ void PixelMapping::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   PixelMapping = new TH2D("rtd events", "Pixel Heatmap", 125, 0, 500, 125, 0, 500);
-   PixelMapping->GetXaxis()->SetTitle("X Coordinate [mm]");
-   PixelMapping->GetYaxis()->SetTitle("Y Coordinate [mm]");
+   Pixel_Mapping = new TH2D("rtd events", "Pixel Heatmap", 125, 0, 500, 125, 0, 500);
+   Pixel_Mapping->GetXaxis()->SetTitle("X Coordinate [mm]");
+   Pixel_Mapping->GetYaxis()->SetTitle("Y Coordinate [mm]");
 
    c1 = new TCanvas("canvas1", "Test Canvas1");   
 }
