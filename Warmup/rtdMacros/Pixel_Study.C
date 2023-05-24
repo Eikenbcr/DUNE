@@ -27,22 +27,22 @@ void Pixel_Study::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
 
-   Pixel_X_1 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_X_1 = new TH1D("rtd events", "Pixel_X[1]", 125, 0, 500);
    Pixel_X_1->GetXaxis()->SetTitle("X Coordinate [mm]");
    Pixel_X_1->GetYaxis()->SetTitle("nResets");
    Pixel_X_1->SetLineColor(kBlue);
    
-   Pixel_X_2 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_X_2 = new TH1D("rtd events", "Pixel_X[2]", 125, 0, 500);
    Pixel_X_2->GetXaxis()->SetTitle("X Coordinate [mm]");
    Pixel_X_2->GetYaxis()->SetTitle("nResets");
    Pixel_X_2->SetLineColor(kRed);
    
-   Pixel_Y_1 = new TH1D("rtd events", "Pixel", 400, 0, 1600);
+   Pixel_Y_1 = new TH1D("rtd events", "Pixel_Y[1]", 400, 0, 1600);
    Pixel_Y_1->GetXaxis()->SetTitle("Y Coordinate [mm]");
    Pixel_Y_1->GetYaxis()->SetTitle("nResets");
    Pixel_Y_1->SetLineColor(kBlue);
    
-   Pixel_Y_2 = new TH1D("rtd events", "Pixel", 400, 0, 1600);
+   Pixel_Y_2 = new TH1D("rtd events", "Pixel_Y[2]", 400, 0, 1600);
    Pixel_Y_2->GetXaxis()->SetTitle("Y Coordinate [mm]");
    Pixel_Y_2->GetYaxis()->SetTitle("nResets");
    Pixel_Y_2->SetLineColor(kRed);
@@ -74,7 +74,7 @@ void Pixel_Study::Terminate()
    
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
-   
+  gStyle->SetOptStat(0);   
    
 Pixel_X_1->GetXaxis()->CenterTitle(true);
 Pixel_X_1->GetXaxis()->SetTitleSize(20);
@@ -89,7 +89,7 @@ Pixel_X_1->SetLineWidth(2);
 Pixel_X_2->SetLineWidth(2);   
 Pixel_X_1->Draw();  
 Pixel_X_2->Draw("SAME");   
-gPad->BuildLegend(0.25,0.65,0.65,0.85);   
+gPad->BuildLegend(0.7,0.9,0.5,0.7);   
 c1->SaveAs("Pixel_X.pdf");
 c1->SaveAs("Pixel_X.png");   
 
@@ -107,7 +107,7 @@ Pixel_Y_1->SetLineWidth(2);
 Pixel_Y_2->SetLineWidth(2);   
 Pixel_Y_1->Draw();  
 Pixel_Y_2->Draw("SAME");   
-gPad->BuildLegend(0.25,0.65,0.65,0.85);   
+gPad->BuildLegend(0.1,0.4,0.7,0.9);   
 c1->SaveAs("Pixel_Y.pdf");
 c1->SaveAs("Pixel_Y.png");      
 }
