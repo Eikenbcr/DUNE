@@ -24,7 +24,7 @@ void PixelMapping::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   Pixel_Mapping = new TH2D("rtd events", "Pixel Heatmap", 400, 0, 1600, 400, 0, 1600);
+   Pixel_Mapping = new TH2D("rtd events", "Pixel Heatmap", 400, 0, 400, 1600, 0, 1600);
    Pixel_Mapping->GetXaxis()->SetTitle("X Coordinate [mm]");
    Pixel_Mapping->GetYaxis()->SetTitle("Y Coordinate [mm]");
 
