@@ -43,7 +43,7 @@ Bool_t PixelMapping::Process(Long64_t entry)
   
    for (int i=0; i < pixel_x.GetSize(); i++){
    Pixel_Mapping_ALL->Fill(pixel_x[i], pixel_y[i]);  
-      if (event = 1){
+      if (event == 1){
    Pixel_Mapping_ONE->Fill(pixel_x[i], pixel_y[i]);           
       }
    }
