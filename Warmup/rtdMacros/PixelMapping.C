@@ -65,9 +65,10 @@ Pixel_Mapping->GetXaxis()->SetNdivisions(5);
 Pixel_Mapping->GetYaxis()->SetNdivisions(5);    
 Pixel_Mapping->SetMinimum(-0.00001);   
 Pixel_Mapping->Draw("COLZ");
-   
+
+   gPad->Update();
    TPaletteAxis *palette = (TPaletteAxis*)Pixel_Mapping->GetListOfFunctions()->FindObject("palette");   
-  palette->SetX1NDC(0.88);
+   palette->SetX1NDC(0.88);
    palette->SetX2NDC(0.9);
    palette->SetY1NDC(0.3);
    palette->SetY2NDC(0.5);
