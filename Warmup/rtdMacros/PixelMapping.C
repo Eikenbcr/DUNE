@@ -65,6 +65,7 @@ void PixelMapping::Terminate()
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.2);
   c1->SetRightMargin(0.2);   
+gStyle->SetPalette(kTemperatureMap);   
    
 Pixel_Mapping_ALL->GetXaxis()->CenterTitle(true);
 Pixel_Mapping_ALL->GetXaxis()->SetTitleSize(20);
