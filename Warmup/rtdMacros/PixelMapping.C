@@ -49,7 +49,6 @@ void PixelMapping::SlaveTerminate()
 void PixelMapping::Terminate()
 {
   gStyle->SetNumberContours(2);
-  gStyle->SetPalette(kDarkBodyRadiator);
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
    
