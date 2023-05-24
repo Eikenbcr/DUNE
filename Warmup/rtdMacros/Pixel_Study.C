@@ -37,12 +37,12 @@ void Pixel_Study::SlaveBegin(TTree * /*tree*/)
    Pixel_X_2->GetYaxis()->SetTitle("nResets");
    Pixel_X_2->SetLineColor(kRed);
    
-   Pixel_Y_1 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_Y_1 = new TH1D("rtd events", "Pixel", 400, 0, 1600);
    Pixel_Y_1->GetXaxis()->SetTitle("Y Coordinate [mm]");
    Pixel_Y_1->GetYaxis()->SetTitle("nResets");
    Pixel_Y_1->SetLineColor(kBlue);
    
-   Pixel_Y_2 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_Y_2 = new TH1D("rtd events", "Pixel", 400, 0, 1600);
    Pixel_Y_2->GetXaxis()->SetTitle("Y Coordinate [mm]");
    Pixel_Y_2->GetYaxis()->SetTitle("nResets");
    Pixel_Y_2->SetLineColor(kRed);
