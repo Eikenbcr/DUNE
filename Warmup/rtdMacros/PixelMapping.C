@@ -51,6 +51,7 @@ void PixelMapping::Terminate()
 {
   gStyle->SetNumberContours(2);
   gStyle->SetHistMinimumZero();
+  gStyle->SetMinimumZero(kFALSE);
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
    
