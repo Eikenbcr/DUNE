@@ -12,7 +12,6 @@
 #include <TStyle.h>
 
 TH2D * Pixel_Mapping = nullptr;
-TH2D * Pixel_Mapping_Zoomed = nullptr;
 
 TCanvas * c1 = nullptr;
 
@@ -26,12 +25,8 @@ void PixelMapping::SlaveBegin(TTree * /*tree*/)
    TString option = GetOption();
    
    Pixel_Mapping = new TH2D("qpixrtd events", "Pixel Heatmap", 100, 250, 350, 1500, 0, 1500);
-   Pixel_Mapping->GetXaxis()->SetTitle("X Coordinate [pixels]");
-   Pixel_Mapping->GetYaxis()->SetTitle("Y Coordinate [pixels]");
-
-   Pixel_Mapping_Zoomed = new TH2D("qpixrtd events", "Pixel Heatmap", 20, 290, 310, 200, 0, 200);
-   Pixel_Mapping_Zoomed->GetXaxis()->SetTitle("X Coordinate [pixels]");
-   Pixel_Mapping_Zoomed->GetYaxis()->SetTitle("Y Coordinate [pixels]");
+   Pixel_Mapping->GetXaxis()->SetTitle("X Coordinate [pixel]");
+   Pixel_Mapping->GetYaxis()->SetTitle("Y Coordinate [pixel]");
    
    c1 = new TCanvas("canvas1", "Test Canvas1", 800, 800);   
 }
@@ -43,7 +38,6 @@ Bool_t PixelMapping::Process(Long64_t entry)
   
    for (int i=0; i < pixel_x.GetSize(); i++){
    Pixel_Mapping->Fill(pixel_x[i], pixel_y[i]); 
-   Pixel_Mapping_Zoomed->Fill(pixel_x[i], pixel_y[i]);
    }
    return kTRUE;
 }
@@ -83,29 +77,4 @@ Pixel_Mapping->Draw("COLZ");
    
 c1->SaveAs("Pixel_Mapping.pdf");
 c1->SaveAs("Pixel_Mapping.png");
-
-Pixel_Mapping_Zoomed->GetXaxis()->CenterTitle(true);
-Pixel_Mapping_Zoomed->GetXaxis()->SetTitleSize(20);
-Pixel_Mapping_Zoomed->GetXaxis()->SetTitleFont(43);
-Pixel_Mapping_Zoomed->GetXaxis()->SetTitleOffset(1.5);
-Pixel_Mapping_Zoomed->GetXaxis()->SetLabelSize(0.05);
-Pixel_Mapping_Zoomed->GetYaxis()->SetTitleSize(20);
-Pixel_Mapping_Zoomed->GetYaxis()->SetTitleFont(43);
-Pixel_Mapping_Zoomed->GetYaxis()->SetLabelSize(0.05);
-Pixel_Mapping_Zoomed->GetXaxis()->SetNdivisions(5); 
-Pixel_Mapping_Zoomed->GetYaxis()->SetNdivisions(5);    
-Pixel_Mapping_Zoomed->SetMinimum(-0.00001);   
-Pixel_Mapping_Zoomed->Draw("COLZ");
-
-   gPad->Update();
-   TPaletteAxis *palette2 = (TPaletteAxis*)Pixel_Mapping_Zoomed->GetListOfFunctions()->FindObject("palette");   
-   palette2->SetX1NDC(0.86);
-   palette2->SetX2NDC(0.9);
-   palette2->SetY1NDC(0.2);
-   palette2->SetY2NDC(0.6);
-   gPad->Modified();
-   gPad->Update();
-   
-c1->SaveAs("Pixel_Mapping_Zoomed.pdf");
-c1->SaveAs("Pixel_Mapping_Zoomed.png");   
 }
