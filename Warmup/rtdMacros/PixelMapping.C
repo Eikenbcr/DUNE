@@ -73,11 +73,11 @@ Pixel_Mapping->SetMinimum(-0.00001);
 Pixel_Mapping->Draw("COLZ");
 
    gPad->Update();
-   TPaletteAxis *palette = (TPaletteAxis*)Pixel_Mapping->GetListOfFunctions()->FindObject("palette");   
-   palette->SetX1NDC(0.86);
-   palette->SetX2NDC(0.9);
-   palette->SetY1NDC(0.2);
-   palette->SetY2NDC(0.6);
+   TPaletteAxis *palette1 = (TPaletteAxis*)Pixel_Mapping->GetListOfFunctions()->FindObject("palette");   
+   palette1->SetX1NDC(0.86);
+   palette1->SetX2NDC(0.9);
+   palette1->SetY1NDC(0.2);
+   palette1->SetY2NDC(0.6);
    gPad->Modified();
    gPad->Update();
    
@@ -98,11 +98,11 @@ Pixel_Mapping_Zoomed->SetMinimum(-0.00001);
 Pixel_Mapping_Zoomed->Draw("COLZ");
 
    gPad->Update();
-   TPaletteAxis *palette = (TPaletteAxis*)Pixel_Mapping_Zoomed->GetListOfFunctions()->FindObject("palette");   
-   palette->SetX1NDC(0.86);
-   palette->SetX2NDC(0.9);
-   palette->SetY1NDC(0.2);
-   palette->SetY2NDC(0.6);
+   TPaletteAxis *palette2 = (TPaletteAxis*)Pixel_Mapping_Zoomed->GetListOfFunctions()->FindObject("palette");   
+   palette2->SetX1NDC(0.86);
+   palette2->SetX2NDC(0.9);
+   palette2->SetY1NDC(0.2);
+   palette2->SetY2NDC(0.6);
    gPad->Modified();
    gPad->Update();
    
