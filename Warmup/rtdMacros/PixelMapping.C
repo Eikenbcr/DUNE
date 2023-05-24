@@ -63,7 +63,7 @@ Pixel_Mapping->GetYaxis()->SetTitleFont(43);
 Pixel_Mapping->GetYaxis()->SetLabelSize(0.05);
 Pixel_Mapping->GetZaxis()->SetNdivisions(1);      
 Pixel_Mapping->GetZaxis()->SetNdivisions(1);   
-Pixel_Mapping->Draw("colz");
+Pixel_Mapping->Draw("COLZ0");
    
  gPad->Update();
    TPaletteAxis *palette = (TPaletteAxis*)Pixel_Mapping->GetListOfFunctions()->FindObject("palette");   
