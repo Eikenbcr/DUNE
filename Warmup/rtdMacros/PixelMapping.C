@@ -33,7 +33,7 @@ void PixelMapping::SlaveBegin(TTree * /*tree*/)
    Pixel_Mapping_ONE->GetXaxis()->SetTitle("X Coordinate [pixel]");
    Pixel_Mapping_ONE->GetYaxis()->SetTitle("Y Coordinate [pixel]");
    
-   c1 = new TCanvas("canvas1", "Test Canvas1", 800, 800);   
+   c1 = new TCanvas("canvas1", "Test Canvas1");   
 }
 
 Bool_t PixelMapping::Process(Long64_t entry)
@@ -76,7 +76,7 @@ Pixel_Mapping_ALL->GetYaxis()->SetTitleFont(43);
 Pixel_Mapping_ALL->GetYaxis()->SetLabelSize(0.05);
 Pixel_Mapping_ALL->GetXaxis()->SetNdivisions(5); 
 Pixel_Mapping_ALL->GetYaxis()->SetNdivisions(5);    
-Pixel_Mapping_ALL->SetMinimum(-0.00001);   
+//Pixel_Mapping_ALL->SetMinimum(-0.00001);   
 Pixel_Mapping_ALL->Draw("COLZ");
 
    gPad->Update();
@@ -104,7 +104,7 @@ Pixel_Mapping_ONE->GetYaxis()->SetLabelSize(0.05);
 Pixel_Mapping_ONE->GetXaxis()->SetNdivisions(5); 
 Pixel_Mapping_ONE->GetYaxis()->SetNdivisions(5);    
 Pixel_Mapping_ONE->GetZaxis()->SetNdivisions(1);    
-Pixel_Mapping_ONE->SetMinimum(-0.00001);   
+//Pixel_Mapping_ONE->SetMinimum(-0.00001);   
 Pixel_Mapping_ONE->Draw("COLZ");
 
    gPad->Update();
