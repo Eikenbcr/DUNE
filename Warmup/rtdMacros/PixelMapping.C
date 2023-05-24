@@ -24,11 +24,11 @@ void PixelMapping::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   Pixel_Mapping = new TH2D("rtd events", "Pixel Heatmap", 100, 0, 400, 400, 0, 1600);
+   Pixel_Mapping = new TH2D("rtd events", "Pixel Heatmap", 400, 0, 1600, 400, 0, 1600);
    Pixel_Mapping->GetXaxis()->SetTitle("X Coordinate [mm]");
    Pixel_Mapping->GetYaxis()->SetTitle("Y Coordinate [mm]");
 
-   c1 = new TCanvas("canvas1", "Test Canvas1",400, 1600);   
+   c1 = new TCanvas("canvas1", "Test Canvas1", 400, 400);   
 }
 
 Bool_t PixelMapping::Process(Long64_t entry)
