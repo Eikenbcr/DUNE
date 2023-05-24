@@ -37,7 +37,7 @@ Bool_t PixelMapping::Process(Long64_t entry)
   fReader.SetLocalEntry(entry);
   
    Pixel_Mapping->Fill(pixel_x[0], pixel_y[0]);
-   
+   Pixel_Mapping->Fill(0,0,-0.2);   
 
    return kTRUE;
 }
@@ -62,7 +62,7 @@ Pixel_Mapping->GetYaxis()->SetTitleSize(20);
 Pixel_Mapping->GetYaxis()->SetTitleFont(43);
 Pixel_Mapping->GetYaxis()->SetLabelSize(0.05);
 Pixel_Mapping->GetZaxis()->SetNdivisions(1); 
-Pixel_Mapping->SetMinimum(-0);   
+Pixel_Mapping->SetMinimum(0);   
 Pixel_Mapping->Draw("COLZ");
    
  gPad->Update();
