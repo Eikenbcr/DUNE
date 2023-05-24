@@ -91,7 +91,7 @@ Pixel_Mapping_ALL->Draw("COLZ");
 c1->SaveAs("Pixel_Mapping_ALL.pdf");
 c1->SaveAs("Pixel_Mapping_ALL.png");
    
- gStyle->SetNumberContours(2);  
+ gStyle->SetNumberContours(1);  
    
 Pixel_Mapping_ONE->GetXaxis()->CenterTitle(true);
 Pixel_Mapping_ONE->GetXaxis()->SetTitleSize(20);
