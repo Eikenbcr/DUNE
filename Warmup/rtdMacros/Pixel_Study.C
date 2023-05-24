@@ -89,7 +89,7 @@ Pixel_X_1->SetLineWidth(2);
 Pixel_X_2->SetLineWidth(2);   
 Pixel_X_1->Draw();  
 Pixel_X_2->Draw("SAME");   
-gPad->BuildLegend(0.7,0.9,0.5,0.7);   
+gPad->BuildLegend(0.7,0.7,0.9,0.9);   
 c1->SaveAs("Pixel_X.pdf");
 c1->SaveAs("Pixel_X.png");   
 
@@ -107,7 +107,7 @@ Pixel_Y_1->SetLineWidth(2);
 Pixel_Y_2->SetLineWidth(2);   
 Pixel_Y_1->Draw();  
 Pixel_Y_2->Draw("SAME");   
-gPad->BuildLegend(0.1,0.4,0.7,0.9);   
+gPad->BuildLegend(0.1,0.7,0.4,0.9);   
 c1->SaveAs("Pixel_Y.pdf");
 c1->SaveAs("Pixel_Y.png");      
 }
