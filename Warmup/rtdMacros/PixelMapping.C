@@ -50,7 +50,8 @@ void PixelMapping::SlaveTerminate()
 void PixelMapping::Terminate()
 {
   c1->SetBottomMargin(0.2);
-  c1->SetLeftMargin(0.3);
+  c1->SetLeftMargin(0.2);
+  c1->SetRightMargin(0.2);   
    
 Pixel_Mapping->GetXaxis()->CenterTitle(true);
 Pixel_Mapping->GetXaxis()->SetTitleSize(20);
