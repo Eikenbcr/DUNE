@@ -36,7 +36,7 @@ Bool_t PixelMapping::Process(Long64_t entry)
   GetEntry(entry);
   fReader.SetLocalEntry(entry);
   
-   Pixel_Mapping->Fill(pixel_x[0], pixel_y[0]);
+   Pixel_Mapping->Fill(pixel_x[1], pixel_y[1]);
 
    return kTRUE;
 }
