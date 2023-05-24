@@ -24,9 +24,9 @@ void PixelMapping::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   Pixel_Mapping = new TH2D("rtd events", "Pixel Heatmap", 200, 200, 400, 1600, 0, 1600);
-   Pixel_Mapping->GetXaxis()->SetTitle("X Coordinate [mm]");
-   Pixel_Mapping->GetYaxis()->SetTitle("Y Coordinate [mm]");
+   Pixel_Mapping = new TH2D("nResets", "Pixel Heatmap", 100, 250, 350, 1600, 0, 1600);
+   Pixel_Mapping->GetXaxis()->SetTitle("X Coordinate [pixels]");
+   Pixel_Mapping->GetYaxis()->SetTitle("Y Coordinate [pixels]");
 
    c1 = new TCanvas("canvas1", "Test Canvas1", 800, 800);   
 }
@@ -68,7 +68,7 @@ Pixel_Mapping->Draw("COLZ");
 
    gPad->Update();
    TPaletteAxis *palette = (TPaletteAxis*)Pixel_Mapping->GetListOfFunctions()->FindObject("palette");   
-   palette->SetX1NDC(0.88);
+   palette->SetX1NDC(0.86);
    palette->SetX2NDC(0.9);
    palette->SetY1NDC(0.2);
    palette->SetY2NDC(0.6);
