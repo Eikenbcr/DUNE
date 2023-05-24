@@ -40,10 +40,15 @@ Bool_t PixelMapping::Process(Long64_t entry)
 {
   GetEntry(entry);
   fReader.SetLocalEntry(entry);
-  
+   
+   
+       bool Event = (
+       (*event == 0.)
+       );  
+   
    for (int i=0; i < pixel_x.GetSize(); i++){
    Pixel_Mapping_ALL->Fill(pixel_x[i], pixel_y[i]);  
-      if (event == 1){
+      if (Event){
    Pixel_Mapping_ONE->Fill(pixel_x[i], pixel_y[i]);           
       }
    }
