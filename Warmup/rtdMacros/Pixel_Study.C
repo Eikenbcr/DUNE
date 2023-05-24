@@ -27,23 +27,23 @@ void Pixel_Study::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
 
-   Pixel_X_1 = new TH1D("rtd events", "Pixel_X[1]", 125, 0, 500);
-   Pixel_X_1->GetXaxis()->SetTitle("X Coordinate [mm]");
+   Pixel_X_1 = new TH1D("rtd events", "Pixel_X[3]", 125, 0, 500);
+   Pixel_X_1->GetXaxis()->SetTitle("X Coordinate [pixel]");
    Pixel_X_1->GetYaxis()->SetTitle("nResets");
    Pixel_X_1->SetLineColor(kBlue);
    
-   Pixel_X_2 = new TH1D("rtd events", "Pixel_X[2]", 125, 0, 500);
-   Pixel_X_2->GetXaxis()->SetTitle("X Coordinate [mm]");
+   Pixel_X_2 = new TH1D("rtd events", "Pixel_X[9]", 125, 0, 500);
+   Pixel_X_2->GetXaxis()->SetTitle("X Coordinate [pixel]");
    Pixel_X_2->GetYaxis()->SetTitle("nResets");
    Pixel_X_2->SetLineColor(kRed);
    
-   Pixel_Y_1 = new TH1D("rtd events", "Pixel_Y[1]", 400, 0, 1600);
-   Pixel_Y_1->GetXaxis()->SetTitle("Y Coordinate [mm]");
+   Pixel_Y_1 = new TH1D("rtd events", "Pixel_Y[3]", 400, 0, 1600);
+   Pixel_Y_1->GetXaxis()->SetTitle("Y Coordinate [pixel]");
    Pixel_Y_1->GetYaxis()->SetTitle("nResets");
    Pixel_Y_1->SetLineColor(kBlue);
    
-   Pixel_Y_2 = new TH1D("rtd events", "Pixel_Y[2]", 400, 0, 1600);
-   Pixel_Y_2->GetXaxis()->SetTitle("Y Coordinate [mm]");
+   Pixel_Y_2 = new TH1D("rtd events", "Pixel_Y[9]", 400, 0, 1600);
+   Pixel_Y_2->GetXaxis()->SetTitle("Y Coordinate [pixel]");
    Pixel_Y_2->GetYaxis()->SetTitle("nResets");
    Pixel_Y_2->SetLineColor(kRed);
       
@@ -55,11 +55,11 @@ Bool_t Pixel_Study::Process(Long64_t entry)
   GetEntry(entry);
   fReader.SetLocalEntry(entry);
   
-  Pixel_X_1->Fill(pixel_x[1]);
-  Pixel_X_2->Fill(pixel_x[2]);
+  Pixel_X_1->Fill(pixel_x[3]);
+  Pixel_X_2->Fill(pixel_x[9]);
    
-  Pixel_Y_1->Fill(pixel_y[1]);
-  Pixel_Y_2->Fill(pixel_y[2]);
+  Pixel_Y_1->Fill(pixel_y[3]);
+  Pixel_Y_2->Fill(pixel_y[9]);
    
    return kTRUE;
 }
