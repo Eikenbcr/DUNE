@@ -25,13 +25,13 @@ void PixelMapping::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   Pixel_Mapping_ALL = new TH2D("qpixrtd events", "QPix Heatmap (All Events)", 100, 250, 350, 1500, 0, 1500);
-   Pixel_Mapping_ALL->GetXaxis()->SetTitle("X Coordinate [pixel]");
-   Pixel_Mapping_ALL->GetYaxis()->SetTitle("Y Coordinate [pixel]");
+   Pixel_Mapping_ALL = new TH2D("qpixrtd events", "QPix Heatmap (All Events)", 40, 100, 140, 600, 0, 600);
+   Pixel_Mapping_ALL->GetXaxis()->SetTitle("X Coordinate [cm]");
+   Pixel_Mapping_ALL->GetYaxis()->SetTitle("Y Coordinate [cm]");
  
-   Pixel_Mapping_ONE = new TH2D("qpixrtd events", "QPix Heatmap (One Event)", 100, 250, 350, 1500, 0, 1500);
-   Pixel_Mapping_ONE->GetXaxis()->SetTitle("X Coordinate [pixel]");
-   Pixel_Mapping_ONE->GetYaxis()->SetTitle("Y Coordinate [pixel]");
+   Pixel_Mapping_ONE = new TH2D("qpixrtd events", "QPix Heatmap (One Event)", 40, 100, 140, 600, 0, 600);
+   Pixel_Mapping_ONE->GetXaxis()->SetTitle("X Coordinate [cm]");
+   Pixel_Mapping_ONE->GetYaxis()->SetTitle("Y Coordinate [cm]");
    
    c1 = new TCanvas("canvas1", "Test Canvas1");   
 }
@@ -47,9 +47,9 @@ Bool_t PixelMapping::Process(Long64_t entry)
        );  
    
    for (int i=0; i < pixel_x.GetSize(); i++){
-   Pixel_Mapping_ALL->Fill(pixel_x[i], pixel_y[i]);  
+   Pixel_Mapping_ALL->Fill(pixel_x[i]*0.4, pixel_y[i]*0.4);  
       if (Event){
-   Pixel_Mapping_ONE->Fill(pixel_x[i], pixel_y[i]);           
+   Pixel_Mapping_ONE->Fill(pixel_x[i]*0.4, pixel_y[i]*0.4);           
       }
    }
    return kTRUE;
