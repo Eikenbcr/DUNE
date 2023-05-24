@@ -1,88 +1,113 @@
 #define Pixel_Study_cxx
-// The class definition in Pixel_Study.h has been generated automatically
-// by the ROOT utility TTree::MakeSelector(). This class is derived
-// from the ROOT class TSelector. For more information on the TSelector
-// framework see $ROOTSYS/README/README.SELECTOR or the ROOT User Manual.
-
-
-// The following methods are defined in this file:
-//    Begin():        called every time a loop on the tree starts,
-//                    a convenient place to create your histograms.
-//    SlaveBegin():   called after Begin(), when on PROOF called only on the
-//                    slave servers.
-//    Process():      called for each event, in this function you decide what
-//                    to read and fill your histograms.
-//    SlaveTerminate: called at the end of the loop on the tree, when on PROOF
-//                    called only on the slave servers.
-//    Terminate():    called at the end of the loop on the tree,
-//                    a convenient place to draw/fit your histograms.
-//
-// To use this file, try the following session on your Tree T:
-//
-// root> T->Process("Pixel_Study.C")
-// root> T->Process("Pixel_Study.C","some options")
-// root> T->Process("Pixel_Study.C+")
-//
-
-
 #include "Pixel_Study.h"
+
+#include <TH1D.h>
+#include <TH2D.h>
+#include <TStyle.h>
+#include <TCanvas.h>
+#include <TFile.h>
+#include <TF1.h>
+#include <TLine.h>
 #include <TH2.h>
 #include <TStyle.h>
 
+TH1D * Pixel_X_1 = nullptr;
+TH1D * Pixel_X_2 = nullptr;
+TH1D * Pixel_Y_1 = nullptr;
+TH1D * Pixel_Y_2 = nullptr;
+
+TCanvas * c1 = nullptr;
+
 void Pixel_Study::Begin(TTree * /*tree*/)
 {
-   // The Begin() function is called at the start of the query.
-   // When running with PROOF Begin() is only called on the client.
-   // The tree argument is deprecated (on PROOF 0 is passed).
-
    TString option = GetOption();
 }
 
 void Pixel_Study::SlaveBegin(TTree * /*tree*/)
 {
-   // The SlaveBegin() function is called after the Begin() function.
-   // When running with PROOF SlaveBegin() is called on each slave server.
-   // The tree argument is deprecated (on PROOF 0 is passed).
-
    TString option = GetOption();
 
+   Pixel_X_1 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_X_1->GetXaxis()->SetTitle("X Coordinate [mm]");
+   Pixel_X_1->GetYaxis()->SetTitle("nResets");
+   Pixel_X_1->SetLineColor(kBlue);
+   
+   Pixel_X_2 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_X_2->GetXaxis()->SetTitle("X Coordinate [mm]");
+   Pixel_X_2->GetYaxis()->SetTitle("nResets");
+   Pixel_X_2->SetLineColor(kRed);
+   
+   Pixel_Y_1 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_Y_1->GetXaxis()->SetTitle("Y Coordinate [mm]");
+   Pixel_Y_1->GetYaxis()->SetTitle("nResets");
+   Pixel_Y_1->SetLineColor(kBlue);
+   
+   Pixel_Y_2 = new TH1D("rtd events", "Pixel", 125, 0, 500);
+   Pixel_Y_2->GetXaxis()->SetTitle("Y Coordinate [mm]");
+   Pixel_Y_2->GetYaxis()->SetTitle("nResets");
+   Pixel_Y_2->SetLineColor(kRed);
+      
+   c1 = new TCanvas("canvas1", "Test Canvas1");      
 }
 
 Bool_t Pixel_Study::Process(Long64_t entry)
 {
-   // The Process() function is called for each entry in the tree (or possibly
-   // keyed object in the case of PROOF) to be processed. The entry argument
-   // specifies which entry in the currently loaded tree is to be processed.
-   // When processing keyed objects with PROOF, the object is already loaded
-   // and is available via the fObject pointer.
-   //
-   // This function should contain the \"body\" of the analysis. It can contain
-   // simple or elaborate selection criteria, run algorithms on the data
-   // of the event and typically fill histograms.
-   //
-   // The processing can be stopped by calling Abort().
-   //
-   // Use fStatus to set the return value of TTree::Process().
-   //
-   // The return value is currently not used.
-
-   fReader.SetLocalEntry(entry);
-
+  GetEntry(entry);
+  fReader.SetLocalEntry(entry);
+  
+  Pixel_X_1->Fill(pixel_x[1]);
+  Pixel_X_2->Fill(pixel_x[2]);
+   
+  Pixel_Y_1->Fill(pixel_y[1]);
+  Pixel_Y_2->Fill(pixel_y[2]);
+   
    return kTRUE;
 }
 
 void Pixel_Study::SlaveTerminate()
 {
-   // The SlaveTerminate() function is called after all entries or objects
-   // have been processed. When running with PROOF SlaveTerminate() is called
-   // on each slave server.
 
 }
 
 void Pixel_Study::Terminate()
 {
-   // The Terminate() function is the last function to be called during
-   // a query. It always runs on the client, it can be used to present
-   // the results graphically or save the results to file.
+   
+  c1->SetBottomMargin(0.2);
+  c1->SetLeftMargin(0.15);
+   
+   
+Pixel_X_1->GetXaxis()->CenterTitle(true);
+Pixel_X_1->GetXaxis()->SetTitleSize(20);
+Pixel_X_1->GetXaxis()->SetTitleFont(43);
+Pixel_X_1->GetXaxis()->SetTitleOffset(1.5);
+Pixel_X_1->GetXaxis()->SetLabelSize(0.05);
+Pixel_X_1->GetYaxis()->SetTitleSize(20);
+Pixel_X_1->GetYaxis()->SetTitleFont(43);
+Pixel_X_1->GetYaxis()->SetLabelSize(0.05);
+Pixel_X_1->GetXaxis()->SetNdivisions(5);
+Pixel_X_1->SetLineWidth(2);
+Pixel_X_2->SetLineWidth(2);   
+Pixel_X_1->Draw();  
+Pixel_X_2->Draw("SAME");   
+gPad->BuildLegend(0.25,0.65,0.65,0.85);   
+c1->SaveAs("Pixel_X.pdf");
+c1->SaveAs("Pixel_X.png");   
 
+   
+Pixel_Y_1->GetXaxis()->CenterTitle(true);
+Pixel_Y_1->GetXaxis()->SetTitleSize(20);
+Pixel_Y_1->GetXaxis()->SetTitleFont(43);
+Pixel_Y_1->GetXaxis()->SetTitleOffset(1.5);
+Pixel_Y_1->GetXaxis()->SetLabelSize(0.05);
+Pixel_Y_1->GetYaxis()->SetTitleSize(20);
+Pixel_Y_1->GetYaxis()->SetTitleFont(43);
+Pixel_Y_1->GetYaxis()->SetLabelSize(0.05);
+Pixel_Y_1->GetXaxis()->SetNdivisions(5);
+Pixel_Y_1->SetLineWidth(2);
+Pixel_Y_2->SetLineWidth(2);   
+Pixel_Y_1->Draw();  
+Pixel_Y_2->Draw("SAME");   
+gPad->BuildLegend(0.25,0.65,0.65,0.85);   
+c1->SaveAs("Pixel_Y.pdf");
+c1->SaveAs("Pixel_Y.png");      
 }
