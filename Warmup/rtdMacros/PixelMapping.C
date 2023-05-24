@@ -50,7 +50,7 @@ void PixelMapping::Terminate()
 {
   gStyle->SetNumberContours(2);
   c1->SetBottomMargin(0.2);
-  c1->SetLeftMargin(0.15);
+  c1->SetLeftMargin(0.3);
    
 Pixel_Mapping->GetXaxis()->CenterTitle(true);
 Pixel_Mapping->GetXaxis()->SetTitleSize(20);
