@@ -11,10 +11,15 @@
 #include <TH2.h>
 #include <TStyle.h>
 
-TH2D * Track_XY = nullptr;
-TH2D * Track_XZ = nullptr;
-TH2D * Track_YZ = nullptr;
-TH3D * Track_XYZ = nullptr;
+TH2D * Track_XY_Init = nullptr;
+TH2D * Track_XZ_Init = nullptr;
+TH2D * Track_YZ_Init = nullptr;
+TH3D * Track_XYZ_Init = nullptr;
+
+TH2D * Track_XY_Fin = nullptr;
+TH2D * Track_XZ_Fin = nullptr;
+TH2D * Track_YZ_Fin = nullptr;
+TH3D * Track_XYZ_Fin = nullptr;
 
 void g4_Particle_Tracks::Begin(TTree * /*tree*/)
 {
@@ -25,9 +30,15 @@ void g4_Particle_Tracks::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   Track_XY = new TH2D("qpixg4 events", "Muon Track X-Y Plane", 20, 119, 121, 20, -1, 1);
-   Track_XY->GetXaxis()->SetTitle("X Coordinate [pixel]");
-   Track_XY->GetYaxis()->SetTitle("Y Coordinate [pixel]");
+   Track_XY_Init = new TH2D("qpixg4 events", "Initial Track Hits on X-Y Plane", 20, 119, 121, 20, -1, 1);
+   Track_XY_Init->GetXaxis()->SetTitle("X Coordinate [pixel]");
+   Track_XY_Init->GetYaxis()->SetTitle("Y Coordinate [pixel]");
+   
+   Track_XY_Fin = new TH2D("qpixg4 events", "Initial Track Hits on X-Y Plane", 20, 119, 121, 20, -1, 1);
+   Track_XY_Init->GetXaxis()->SetTitle("X Coordinate [pixel]");
+   Track_XY_Init->GetYaxis()->SetTitle("Y Coordinate [pixel]");
+      
+
 }
 
 Bool_t g4_Particle_Tracks::Process(Long64_t entry)
