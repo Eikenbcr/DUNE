@@ -167,9 +167,12 @@ TLine * line_yz[x_init.size()];
  TPolyLine3D * line_xyz[x_init.size()];
  
     for (int n=0; n < x_init.size(); n++){
-    x_arr = {x_init[n], x_fin[n]};
-    y_arr = {y_init[n], y_fin[n]};
-    z_arr = {z_init[n], z_fin[n]};    
+    x_arr[0] = x_init[n];
+    x_arr[1] = x_fin[n];     
+    y_arr[0] = y_init[n];
+    y_arr[1] = y_fin[n];     
+    z_arr[0] = z_init[n];
+    z_arr[1] = z_fin[n];          
     line_xyz[n] = new TPolyLine3D(2, x_arr, y_arr, z_arr);
     line_xyz[n]->SetLineColor(kRed);
     line_xyz[n]->Draw("SAME");
