@@ -146,6 +146,13 @@ void g4_Particle_Tracks::Terminate()
  c1->SaveAs("Track_XY.pdf");
  c1->SaveAs("Track_XY.png");   
 
+   for (int n=0; n < x_init.size(); i++){
+   TLine * line[n] = new TLine(x_init[n],y_init[n],x_fin[n],y_fin[n]);
+    line[n]->Draw();
+   }
+ c1->SaveAs("Track_XY_Line.pdf");
+ c1->SaveAs("Track_XY_Line.png");    
+ 
  Track_XZ_Init->GetXaxis()->CenterTitle(true);
  Track_XZ_Init->GetXaxis()->SetTitleSize(20);
  Track_XZ_Init->GetXaxis()->SetTitleFont(43);
