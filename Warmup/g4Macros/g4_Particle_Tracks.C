@@ -1,51 +1,33 @@
 #define g4_Particle_Tracks_cxx
-// The class definition in g4_Particle_Tracks.h has been generated automatically
-// by the ROOT utility TTree::MakeSelector(). This class is derived
-// from the ROOT class TSelector. For more information on the TSelector
-// framework see $ROOTSYS/README/README.SELECTOR or the ROOT User Manual.
-
-
-// The following methods are defined in this file:
-//    Begin():        called every time a loop on the tree starts,
-//                    a convenient place to create your histograms.
-//    SlaveBegin():   called after Begin(), when on PROOF called only on the
-//                    slave servers.
-//    Process():      called for each event, in this function you decide what
-//                    to read and fill your histograms.
-//    SlaveTerminate: called at the end of the loop on the tree, when on PROOF
-//                    called only on the slave servers.
-//    Terminate():    called at the end of the loop on the tree,
-//                    a convenient place to draw/fit your histograms.
-//
-// To use this file, try the following session on your Tree T:
-//
-// root> T->Process("g4_Particle_Tracks.C")
-// root> T->Process("g4_Particle_Tracks.C","some options")
-// root> T->Process("g4_Particle_Tracks.C+")
-//
-
-
 #include "g4_Particle_Tracks.h"
+
+#include <TH1D.h>
+#include <TH2D.h>
+#include <TStyle.h>
+#include <TCanvas.h>
+#include <TFile.h>
+#include <TF1.h>
+#include <TLine.h>
 #include <TH2.h>
 #include <TStyle.h>
 
+TH2D * Track_XY = nullptr;
+TH2D * Track_XZ = nullptr;
+TH2D * Track_YZ = nullptr;
+TH3D * Track_XYZ = nullptr;
+
 void g4_Particle_Tracks::Begin(TTree * /*tree*/)
 {
-   // The Begin() function is called at the start of the query.
-   // When running with PROOF Begin() is only called on the client.
-   // The tree argument is deprecated (on PROOF 0 is passed).
-
    TString option = GetOption();
 }
 
 void g4_Particle_Tracks::SlaveBegin(TTree * /*tree*/)
 {
-   // The SlaveBegin() function is called after the Begin() function.
-   // When running with PROOF SlaveBegin() is called on each slave server.
-   // The tree argument is deprecated (on PROOF 0 is passed).
-
    TString option = GetOption();
-
+   
+   Track_XY = new TH2D("qpixg4 events", "Muon Track X-Y Plane", 20, 119, 121, 20, -1, 1);
+   Track_XY->GetXaxis()->SetTitle("X Coordinate [pixel]");
+   Track_XY->GetYaxis()->SetTitle("Y Coordinate [pixel]");
 }
 
 Bool_t g4_Particle_Tracks::Process(Long64_t entry)
