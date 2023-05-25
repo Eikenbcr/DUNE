@@ -154,17 +154,17 @@ TLine * line_yz[x_init.size()];
  c1->SaveAs("Track_YZ.pdf");
  c1->SaveAs("Track_YZ.png");   
  
- Track_XYZ_Init->GetXaxis()->CenterTitle(true);  
- Track_XYZ_Init->GetYaxis()->CenterTitle(true); 
- Track_XYZ_Init->GetXaxis()->SetTitleOffset(2);
- Track_XYZ_Init->GetYaxis()->SetTitleOffset(2);  
- Track_XYZ_Init->GetZaxis()->SetTitleOffset(1.5);     
- Track_XYZ_Init->Draw();  
+ Track_XYZ->GetXaxis()->CenterTitle(true);  
+ Track_XYZ->GetYaxis()->CenterTitle(true); 
+ Track_XYZ->GetXaxis()->SetTitleOffset(2);
+ Track_XYZ->GetYaxis()->SetTitleOffset(2);  
+ Track_XYZ->GetZaxis()->SetTitleOffset(1.5);     
+ Track_XYZ->Draw();  
 
  TPolyLine3D * line_xyz[x_init.size()];
  
     for (int n=0; n < x_init.size(); n++){
-    line_xyz[n] = new TPolyLine3D(2, {x_init[n], x_fin[n]}, {y_init[n], y_fin[n]}, {z_init[n], z_fin[n]});
+    line_xyz[n] = new TPolyLine3D(2, [x_init[n], x_fin[n]], [y_init[n], y_fin[n]], [z_init[n], z_fin[n]]);
     line_xyz[n]->SetLineColor(kRed);
     line_xyz[n]->Draw("SAME");
    }
