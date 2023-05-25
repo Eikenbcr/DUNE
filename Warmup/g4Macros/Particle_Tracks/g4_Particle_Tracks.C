@@ -30,84 +30,138 @@ void g4_Particle_Tracks::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   Track_XY_Init = new TH2D("qpixg4 events", "Initial Track Hits on X-Y Plane", 575, 0, 230, 1500, 0, 600);
+   Track_XY_Init = new TH2D("qpixg4 events", "Initial Track Hits", 575, 0, 230, 1500, 0, 600);
    Track_XY_Init->GetXaxis()->SetTitle("X Position [cm]");
    Track_XY_Init->GetYaxis()->SetTitle("Y Position [cm]");
    Track_XY_Init-SetMarkerColor(kBlue);
    
-   Track_XY_Fin = new TH2D("qpixg4 events", "Final Track Hits on X-Y Plane", 575, 0, 230, 1500, 0, 600);
+   Track_XY_Fin = new TH2D("qpixg4 events", "Final Track Hits", 575, 0, 230, 1500, 0, 600);
    Track_XY_Fin->GetXaxis()->SetTitle("X Position [cm]]");
    Track_XY_Fin->GetYaxis()->SetTitle("Y Position [cm]");
    Track_XY_Fin-SetMarkerColor(kRed);      
    
-   Track_XZ_Init = new TH2D("qpixg4 events", "Initial Track Hits on X-Z Plane", 575, 0, 230, 900, 0, 360);
+   Track_XZ_Init = new TH2D("qpixg4 events", "Initial Track Hits", 575, 0, 230, 900, 0, 360);
    Track_XZ_Init->GetXaxis()->SetTitle("X Position [cm]");
    Track_XZ_Init->GetYaxis()->SetTitle("Z Position [cm]");
    Track_XZ_Init-SetMarkerColor(kBlue);
    
-   Track_XZ_Fin = new TH2D("qpixg4 events", "Final Track Hits on X-Z Plane", 575, 0, 230, 900, 0, 360);
+   Track_XZ_Fin = new TH2D("qpixg4 events", "Final Track Hits", 575, 0, 230, 900, 0, 360);
    Track_XZ_Fin->GetXaxis()->SetTitle("X Position [cm]]");
    Track_XZ_Fin->GetYaxis()->SetTitle("Z Position [cm]");
    Track_XZ_Fin-SetMarkerColor(kRed);   
    
-   Track_YZ_Init = new TH2D("qpixg4 events", "Initial Track Hits on Y-Z Plane", 1500, 0, 600, 900, 0, 360);
+   Track_YZ_Init = new TH2D("qpixg4 events", "Initial Track Hits", 1500, 0, 600, 900, 0, 360);
    Track_YZ_Init->GetXaxis()->SetTitle("Y Position [cm]");
    Track_YZ_Init->GetYaxis()->SetTitle("Z Position [cm]");
    Track_YZ_Init-SetMarkerColor(kBlue);
    
-   Track_YZ_Fin = new TH2D("qpixg4 events", "Final Track Hits on Y-Z Plane", 1500, 0, 600, 900, 0, 360);
+   Track_YZ_Fin = new TH2D("qpixg4 events", "Final Track Hits", 1500, 0, 600, 900, 0, 360);
    Track_YZ_Fin->GetXaxis()->SetTitle("Y Position [cm]]");
    Track_YZ_Fin->GetYaxis()->SetTitle("Z Position [cm]");
    Track_YZ_Fin-SetMarkerColor(kRed);   
    
-   Track_XYZ_Init = new TH2D("qpixg4 events", "Initial Track Hits in 3D", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
+   Track_XYZ_Init = new TH2D("qpixg4 events", "Initial Track Hits", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
    Track_XYZ_Init->GetXaxis()->SetTitle("X Position [cm]");
    Track_XYZ_Init->GetYaxis()->SetTitle("Y Position [cm]");
    Track_XYZ_Init->GetZaxis()->SetTitle("Z Position [cm]");
    Track_XYZ_Init-SetMarkerColor(kBlue);
    
-   Track_XYZ_Fin = new TH2D("qpixg4 events", "Final Track Hits in 3D", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
+   Track_XYZ_Fin = new TH2D("qpixg4 events", "Final Track Hits", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
    Track_XYZ_Fin->GetXaxis()->SetTitle("X Position [cm]]");
    Track_XYZ_Fin->GetYaxis()->SetTitle("Y Position [cm]");
    Track_XYZ_Fin->GetZaxis()->SetTitle("Z Position [cm]");
    Track_XYZ_Fin-SetMarkerColor(kRed);   
+   
+   c1 = new TCanvas("canvas1", "Test Canvas1");      
 }
 
 Bool_t g4_Particle_Tracks::Process(Long64_t entry)
 {
-   // The Process() function is called for each entry in the tree (or possibly
-   // keyed object in the case of PROOF) to be processed. The entry argument
-   // specifies which entry in the currently loaded tree is to be processed.
-   // When processing keyed objects with PROOF, the object is already loaded
-   // and is available via the fObject pointer.
-   //
-   // This function should contain the \"body\" of the analysis. It can contain
-   // simple or elaborate selection criteria, run algorithms on the data
-   // of the event and typically fill histograms.
-   //
-   // The processing can be stopped by calling Abort().
-   //
-   // Use fStatus to set the return value of TTree::Process().
-   //
-   // The return value is currently not used.
-
-   fReader.SetLocalEntry(entry);
+  GetEntry(entry);
+  fReader.SetLocalEntry(entry);
+   
+   
+       bool Event = (
+       (*event == 0.)
+       );  
+   
+   for (int i=0; i < hit_start_x.GetSize(); i++){
+      if (Event){
+         
+  Track_XY_Init->Fill(hit_start_x[i], hit_start_y[i]);   
+  Track_XY_Fin->Fill(hit_end_x[i], hit_end_y[i]);
+  Track_XZ_Init->Fill(hit_start_x[i], hit_start_z[i]);   
+  Track_XZ_Fin->Fill(hit_end_x[i], hit_end_z[i]);       
+  Track_YZ_Init->Fill(hit_start_y[i], hit_start_z[i]);   
+  Track_YZ_Fin->Fill(hit_end_y[i], hit_end_z[i]);     
+  Track_XYZ_Init->Fill(hit_start_x[i], hit_start_y[i], hit_start_z[i]);   
+  Track_XYZ_Fin->Fill(hit_end_x[i], hit_end_y[i], hit_end_z[i]);             
+      }
+   }   
 
    return kTRUE;
 }
 
 void g4_Particle_Tracks::SlaveTerminate()
 {
-   // The SlaveTerminate() function is called after all entries or objects
-   // have been processed. When running with PROOF SlaveTerminate() is called
-   // on each slave server.
 
 }
 
 void g4_Particle_Tracks::Terminate()
 {
-   // The Terminate() function is the last function to be called during
-   // a query. It always runs on the client, it can be used to present
-   // the results graphically or save the results to file.
+  c1->SetBottomMargin(0.2);
+  c1->SetLeftMargin(0.15);
+  gStyle->SetOptStat(0);   
+   
+ Track_XY_Init->GetXaxis()->CenterTitle(true);
+ Track_XY_Init->GetXaxis()->SetTitleSize(20);
+ Track_XY_Init->GetXaxis()->SetTitleFont(43);
+ Track_XY_Init->GetXaxis()->SetTitleOffset(1.5);
+ Track_XY_Init->GetXaxis()->SetLabelSize(0.05);
+ Track_XY_Init->GetYaxis()->SetTitleSize(20);
+ Track_XY_Init->GetYaxis()->SetTitleFont(43);
+ Track_XY_Init->GetYaxis()->SetLabelSize(0.05);   
+ Track_XY_Init->Draw();  
+ Track_XY_Fin->Draw("SAME");   
+ gPad->BuildLegend(0.7,0.7,0.9,0.9);   
+ Track_XY_Init->SetTitle("Track Hits in X-Y Plane");
+ c1->SaveAs("Track_XY.pdf");
+ c1->SaveAs("Track_XY.png");   
 
+ Track_XZ_Init->GetXaxis()->CenterTitle(true);
+ Track_XZ_Init->GetXaxis()->SetTitleSize(20);
+ Track_XZ_Init->GetXaxis()->SetTitleFont(43);
+ Track_XZ_Init->GetXaxis()->SetTitleOffset(1.5);
+ Track_XZ_Init->GetXaxis()->SetLabelSize(0.05);
+ Track_XZ_Init->GetYaxis()->SetTitleSize(20);
+ Track_XZ_Init->GetYaxis()->SetTitleFont(43);
+ Track_XZ_Init->GetYaxis()->SetLabelSize(0.05);   
+ Track_XZ_Init->Draw();  
+ Track_XZ_Fin->Draw("SAME");   
+ gPad->BuildLegend(0.7,0.7,0.9,0.9);   
+ Track_XZ_Init->SetTitle("Track Hits in X-Z Plane");
+ c1->SaveAs("Track_XZ.pdf");
+ c1->SaveAs("Track_XZ.png");      
+   
+ Track_YZ_Init->GetXaxis()->CenterTitle(true);
+ Track_YZ_Init->GetXaxis()->SetTitleSize(20);
+ Track_YZ_Init->GetXaxis()->SetTitleFont(43);
+ Track_YZ_Init->GetXaxis()->SetTitleOffset(1.5);
+ Track_YZ_Init->GetXaxis()->SetLabelSize(0.05);
+ Track_YZ_Init->GetYaxis()->SetTitleSize(20);
+ Track_YZ_Init->GetYaxis()->SetTitleFont(43);
+ Track_YZ_Init->GetYaxis()->SetLabelSize(0.05);   
+ Track_YZ_Init->Draw();  
+ Track_YZ_Fin->Draw("SAME");   
+ gPad->BuildLegend(0.7,0.7,0.9,0.9);   
+ Track_YZ_Init->SetTitle("Track Hits in Y-Z Plane");
+ c1->SaveAs("Track_YZ.pdf");
+ c1->SaveAs("Track_YZ.png");       
+   
+ Track_XYZ_Init->Draw();  
+ Track_XYZ_Fin->Draw("SAME");   
+ gPad->BuildLegend(0.7,0.7,0.9,0.9);   
+ Track_YZ_Init->SetTitle("Track Hits in 3D");
+ c1->SaveAs("Track_XYZ.pdf");
+ c1->SaveAs("Track_XYZ.png");      
 }
