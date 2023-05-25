@@ -146,8 +146,9 @@ void g4_Particle_Tracks::Terminate()
  c1->SaveAs("Track_XY.pdf");
  c1->SaveAs("Track_XY.png");   
 
- c1->Clear();
-
+Track_XY_Init->Reset("ICESM");
+Track_XY_Fin->Reset("ICESM");
+  
  TLine * line_xy[x_init.size()];
  
    for (int n=0; n < x_init.size(); n++){
