@@ -125,7 +125,6 @@ void g4_Particle_Tracks::Terminate()
  Track_XY_Init->GetYaxis()->SetLabelSize(0.05);   
  Track_XY_Init->Draw();  
  Track_XY_Fin->Draw("SAME");   
- gPad->BuildLegend(0.7,0.7,0.9,0.9);   
  Track_XY_Init->SetTitle("Track Hits in X-Y Plane");
  c1->SaveAs("Track_XY.pdf");
  c1->SaveAs("Track_XY.png");   
@@ -140,7 +139,6 @@ void g4_Particle_Tracks::Terminate()
  Track_XZ_Init->GetYaxis()->SetLabelSize(0.05);   
  Track_XZ_Init->Draw();  
  Track_XZ_Fin->Draw("SAME");   
- gPad->BuildLegend(0.7,0.7,0.9,0.9);   
  Track_XZ_Init->SetTitle("Track Hits in X-Z Plane");
  c1->SaveAs("Track_XZ.pdf");
  c1->SaveAs("Track_XZ.png");      
@@ -155,14 +153,17 @@ void g4_Particle_Tracks::Terminate()
  Track_YZ_Init->GetYaxis()->SetLabelSize(0.05);   
  Track_YZ_Init->Draw();  
  Track_YZ_Fin->Draw("SAME");   
- gPad->BuildLegend(0.7,0.7,0.9,0.9);   
  Track_YZ_Init->SetTitle("Track Hits in Y-Z Plane");
  c1->SaveAs("Track_YZ.pdf");
  c1->SaveAs("Track_YZ.png");       
    
+ Track_XYZ_Init->GetXaxis()->CenterTitle(true);  
+ Track_XYZ_Init->GetYaxis()->CenterTitle(true); 
+ Track_XYZ_Init->GetXaxis()->SetTitleOffset(1.5);
+ Track_XYZ_Init->GetYaxis()->SetTitleOffset(1.5);  
+ Track_XYZ_Init->GetZaxis()->SetTitleOffset(1.5);     
  Track_XYZ_Init->Draw();  
  Track_XYZ_Fin->Draw("SAME");   
- gPad->BuildLegend(0.7,0.7,0.9,0.9);   
  Track_YZ_Init->SetTitle("Track Hits in 3D");
  c1->SaveAs("Track_XYZ.pdf");
  c1->SaveAs("Track_XYZ.png");      
