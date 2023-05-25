@@ -146,11 +146,11 @@ void g4_Particle_Tracks::Terminate()
  c1->SaveAs("Track_XY.pdf");
  c1->SaveAs("Track_XY.png");   
 
- TLine * line_xy[x_init.size()] = nullptr;
+ TLine * line_xy[x_init.size()];
  
    for (int n=0; n < x_init.size(); n++){
     line_xy[n] = new TLine(x_init[n],y_init[n],x_fin[n],y_fin[n]);
-    line[n]->Draw();
+    line_xy[n]->Draw();
    }
  c1->SaveAs("Track_XY_Line.pdf");
  c1->SaveAs("Track_XY_Line.png");    
