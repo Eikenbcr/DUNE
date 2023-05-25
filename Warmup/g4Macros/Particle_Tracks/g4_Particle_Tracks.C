@@ -35,7 +35,7 @@ void g4_Particle_Tracks::SlaveBegin(TTree * /*tree*/)
    Track_XY_Init = new TH2D("qpixg4 events", "Initial Track Hits", 575, 0, 230, 1500, 0, 600);
    Track_XY_Init->GetXaxis()->SetTitle("X Position [cm]");
    Track_XY_Init->GetYaxis()->SetTitle("Y Position [cm]");
-   Track_XY_Init->SetFillColor(kBlue);
+   Track_XY_Init->SetMarkerColor(kBlue);
    
    Track_XY_Fin = new TH2D("qpixg4 events", "Final Track Hits", 575, 0, 230, 1500, 0, 600);
    Track_XY_Fin->GetXaxis()->SetTitle("X Position [cm]]");
@@ -45,34 +45,34 @@ void g4_Particle_Tracks::SlaveBegin(TTree * /*tree*/)
    Track_XZ_Init = new TH2D("qpixg4 events", "Initial Track Hits", 575, 0, 230, 900, 0, 360);
    Track_XZ_Init->GetXaxis()->SetTitle("X Position [cm]");
    Track_XZ_Init->GetYaxis()->SetTitle("Z Position [cm]");
-   Track_XZ_Init->SetFillColor(kBlue);
+   Track_XZ_Init->SetMarkerColor(kBlue);
    
    Track_XZ_Fin = new TH2D("qpixg4 events", "Final Track Hits", 575, 0, 230, 900, 0, 360);
    Track_XZ_Fin->GetXaxis()->SetTitle("X Position [cm]]");
    Track_XZ_Fin->GetYaxis()->SetTitle("Z Position [cm]");
-   Track_XZ_Fin->SetFillColor(kRed);   
+   Track_XZ_Fin->SetMarkerColor(kRed);   
    
    Track_YZ_Init = new TH2D("qpixg4 events", "Initial Track Hits", 1500, 0, 600, 900, 0, 360);
    Track_YZ_Init->GetXaxis()->SetTitle("Y Position [cm]");
    Track_YZ_Init->GetYaxis()->SetTitle("Z Position [cm]");
-   Track_YZ_Init->SetFillColor(kBlue);
+   Track_YZ_Init->SetMarkerColor(kBlue);
    
    Track_YZ_Fin = new TH2D("qpixg4 events", "Final Track Hits", 1500, 0, 600, 900, 0, 360);
    Track_YZ_Fin->GetXaxis()->SetTitle("Y Position [cm]]");
    Track_YZ_Fin->GetYaxis()->SetTitle("Z Position [cm]");
-   Track_YZ_Fin->SetFillColor(kRed);   
+   Track_YZ_Fin->SetMarkerColor(kRed);   
    
    Track_XYZ_Init = new TH3D("qpixg4 events", "Initial Track Hits", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
    Track_XYZ_Init->GetXaxis()->SetTitle("X Position [cm]");
    Track_XYZ_Init->GetYaxis()->SetTitle("Y Position [cm]");
    Track_XYZ_Init->GetZaxis()->SetTitle("Z Position [cm]");
-   Track_XYZ_Init->SetFillColor(kBlue);
+   Track_XYZ_Init->SetMarkerColor(kBlue);
    
    Track_XYZ_Fin = new TH3D("qpixg4 events", "Final Track Hits", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
    Track_XYZ_Fin->GetXaxis()->SetTitle("X Position [cm]]");
    Track_XYZ_Fin->GetYaxis()->SetTitle("Y Position [cm]");
    Track_XYZ_Fin->GetZaxis()->SetTitle("Z Position [cm]");
-   Track_XYZ_Fin->SetFillColor(kRed);   
+   Track_XYZ_Fin->SetMarkerColor(kRed);   
    
    c1 = new TCanvas("canvas1", "Test Canvas1");      
 }
@@ -125,6 +125,7 @@ void g4_Particle_Tracks::Terminate()
  Track_XY_Init->GetYaxis()->SetLabelSize(0.05);   
  Track_XY_Init->Draw();  
  Track_XY_Fin->Draw("SAME");   
+ gPad->BuildLegend(0.2,0.7,0.4,0.9);    
  Track_XY_Init->SetTitle("Track Hits in X-Y Plane");
  c1->SaveAs("Track_XY.pdf");
  c1->SaveAs("Track_XY.png");   
@@ -138,7 +139,8 @@ void g4_Particle_Tracks::Terminate()
  Track_XZ_Init->GetYaxis()->SetTitleFont(43);
  Track_XZ_Init->GetYaxis()->SetLabelSize(0.05);   
  Track_XZ_Init->Draw();  
- Track_XZ_Fin->Draw("SAME");   
+ Track_XZ_Fin->Draw("SAME");  
+ gPad->BuildLegend(0.2,0.7,0.4,0.9);    
  Track_XZ_Init->SetTitle("Track Hits in X-Z Plane");
  c1->SaveAs("Track_XZ.pdf");
  c1->SaveAs("Track_XZ.png");      
@@ -152,7 +154,8 @@ void g4_Particle_Tracks::Terminate()
  Track_YZ_Init->GetYaxis()->SetTitleFont(43);
  Track_YZ_Init->GetYaxis()->SetLabelSize(0.05);   
  Track_YZ_Init->Draw();  
- Track_YZ_Fin->Draw("SAME");   
+ Track_YZ_Fin->Draw("SAME"); 
+ gPad->BuildLegend(0.2,0.7,0.4,0.9);     
  Track_YZ_Init->SetTitle("Track Hits in Y-Z Plane");
  c1->SaveAs("Track_YZ.pdf");
  c1->SaveAs("Track_YZ.png");       
@@ -163,7 +166,8 @@ void g4_Particle_Tracks::Terminate()
  Track_XYZ_Init->GetYaxis()->SetTitleOffset(1.5);  
  Track_XYZ_Init->GetZaxis()->SetTitleOffset(1.5);     
  Track_XYZ_Init->Draw();  
- Track_XYZ_Fin->Draw("SAME");   
+ Track_XYZ_Fin->Draw("SAME");  
+ gPad->BuildLegend(0.2,0.7,0.4,0.9);     
  Track_YZ_Init->SetTitle("Track Hits in 3D");
  c1->SaveAs("Track_XYZ.pdf");
  c1->SaveAs("Track_XYZ.png");      
