@@ -13,6 +13,15 @@
 
 TH2D * Track_XY_Init = nullptr;
 TH2D * Track_XZ_Init = nullptr;
+
+ vector <double> x_init(0);
+ vector <double> x_fin(0);
+ vector <double> y_init(0);
+ vector <double> y_fin(0);
+ vector <double> y_init(0);
+ vector <double> y_fin(0);
+
+
 TH2D * Track_YZ_Init = nullptr;
 TH3D * Track_XYZ_Init = nullptr;
 
@@ -97,7 +106,14 @@ Bool_t g4_Particle_Tracks::Process(Long64_t entry)
   Track_YZ_Init->Fill(hit_start_y[i], hit_start_z[i]);   
   Track_YZ_Fin->Fill(hit_end_y[i], hit_end_z[i]);     
   Track_XYZ_Init->Fill(hit_start_x[i], hit_start_y[i], hit_start_z[i]);   
-  Track_XYZ_Fin->Fill(hit_end_x[i], hit_end_y[i], hit_end_z[i]);             
+  Track_XYZ_Fin->Fill(hit_end_x[i], hit_end_y[i], hit_end_z[i]);   
+
+  x_init.pushback(hit_start_x[i];        
+  x_fin.pushback(hit_end_x[i];  
+  y_init.pushback(hit_start_y[i];        
+  y_fin.pushback(hit_end_y[i];    
+  z_init.pushback(hit_start_z[i];        
+  z_fin.pushback(hit_end_z[i];                     
       }
    }   
 
