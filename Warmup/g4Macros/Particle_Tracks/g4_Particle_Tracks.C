@@ -30,15 +30,47 @@ void g4_Particle_Tracks::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
    
-   Track_XY_Init = new TH2D("qpixg4 events", "Initial Track Hits on X-Y Plane", 20, 119, 121, 20, -1, 1);
-   Track_XY_Init->GetXaxis()->SetTitle("X Coordinate [pixel]");
-   Track_XY_Init->GetYaxis()->SetTitle("Y Coordinate [pixel]");
+   Track_XY_Init = new TH2D("qpixg4 events", "Initial Track Hits on X-Y Plane", 575, 0, 230, 1500, 0, 600);
+   Track_XY_Init->GetXaxis()->SetTitle("X Position [cm]");
+   Track_XY_Init->GetYaxis()->SetTitle("Y Position [cm]");
+   Track_XY_Init-SetMarkerColor(kBlue);
    
-   Track_XY_Fin = new TH2D("qpixg4 events", "Initial Track Hits on X-Y Plane", 20, 119, 121, 20, -1, 1);
-   Track_XY_Init->GetXaxis()->SetTitle("X Coordinate [pixel]");
-   Track_XY_Init->GetYaxis()->SetTitle("Y Coordinate [pixel]");
-      
-
+   Track_XY_Fin = new TH2D("qpixg4 events", "Final Track Hits on X-Y Plane", 575, 0, 230, 1500, 0, 600);
+   Track_XY_Fin->GetXaxis()->SetTitle("X Position [cm]]");
+   Track_XY_Fin->GetYaxis()->SetTitle("Y Position [cm]");
+   Track_XY_Fin-SetMarkerColor(kRed);      
+   
+   Track_XZ_Init = new TH2D("qpixg4 events", "Initial Track Hits on X-Z Plane", 575, 0, 230, 900, 0, 360);
+   Track_XZ_Init->GetXaxis()->SetTitle("X Position [cm]");
+   Track_XZ_Init->GetYaxis()->SetTitle("Z Position [cm]");
+   Track_XZ_Init-SetMarkerColor(kBlue);
+   
+   Track_XZ_Fin = new TH2D("qpixg4 events", "Final Track Hits on X-Z Plane", 575, 0, 230, 900, 0, 360);
+   Track_XZ_Fin->GetXaxis()->SetTitle("X Position [cm]]");
+   Track_XZ_Fin->GetYaxis()->SetTitle("Z Position [cm]");
+   Track_XZ_Fin-SetMarkerColor(kRed);   
+   
+   Track_YZ_Init = new TH2D("qpixg4 events", "Initial Track Hits on Y-Z Plane", 1500, 0, 600, 900, 0, 360);
+   Track_YZ_Init->GetXaxis()->SetTitle("Y Position [cm]");
+   Track_YZ_Init->GetYaxis()->SetTitle("Z Position [cm]");
+   Track_YZ_Init-SetMarkerColor(kBlue);
+   
+   Track_YZ_Fin = new TH2D("qpixg4 events", "Final Track Hits on Y-Z Plane", 1500, 0, 600, 900, 0, 360);
+   Track_YZ_Fin->GetXaxis()->SetTitle("Y Position [cm]]");
+   Track_YZ_Fin->GetYaxis()->SetTitle("Z Position [cm]");
+   Track_YZ_Fin-SetMarkerColor(kRed);   
+   
+   Track_XYZ_Init = new TH2D("qpixg4 events", "Initial Track Hits in 3D", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
+   Track_XYZ_Init->GetXaxis()->SetTitle("X Position [cm]");
+   Track_XYZ_Init->GetYaxis()->SetTitle("Y Position [cm]");
+   Track_XYZ_Init->GetZaxis()->SetTitle("Z Position [cm]");
+   Track_XYZ_Init-SetMarkerColor(kBlue);
+   
+   Track_XYZ_Fin = new TH2D("qpixg4 events", "Final Track Hits in 3D", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
+   Track_XYZ_Fin->GetXaxis()->SetTitle("X Position [cm]]");
+   Track_XYZ_Fin->GetYaxis()->SetTitle("Y Position [cm]");
+   Track_XYZ_Fin->GetZaxis()->SetTitle("Z Position [cm]");
+   Track_XYZ_Fin-SetMarkerColor(kRed);   
 }
 
 Bool_t g4_Particle_Tracks::Process(Long64_t entry)
