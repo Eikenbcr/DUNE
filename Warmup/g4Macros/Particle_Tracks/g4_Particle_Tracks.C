@@ -50,7 +50,7 @@ void g4_Particle_Tracks::SlaveBegin(TTree * /*tree*/)
    Track_YZ->GetYaxis()->SetTitle("Z Position [cm]");
    
    Track_XYZ = new TH3D("qpixg4 events", "Track Hits in 3D", 575, 0, 230, 1500, 0, 600, 900, 0, 360);
-   Track_XYZ->GetXaxis()->SetTitle("X Position [cm]]");
+   Track_XYZ->GetXaxis()->SetTitle("X Position [cm]");
    Track_XYZ->GetYaxis()->SetTitle("Y Position [cm]");
    Track_XYZ->GetZaxis()->SetTitle("Z Position [cm]");
 
