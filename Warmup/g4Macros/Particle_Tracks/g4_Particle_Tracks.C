@@ -17,6 +17,9 @@
  vector <double> y_fin(0);
  vector <double> z_init(0);
  vector <double> z_fin(0);
+ vector <double> x_arr(2);
+ vector <double> y_arr(2);
+ vector <double> z_arr(2);
 
 TH2D * Track_XY = nullptr;
 TH2D * Track_YZ = nullptr;
