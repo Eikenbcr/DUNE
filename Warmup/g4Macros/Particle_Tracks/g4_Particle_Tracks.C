@@ -162,8 +162,8 @@ void g4_Particle_Tracks::Terminate()
    
  Track_XYZ_Init->GetXaxis()->CenterTitle(true);  
  Track_XYZ_Init->GetYaxis()->CenterTitle(true); 
- Track_XYZ_Init->GetXaxis()->SetTitleOffset(1.5);
- Track_XYZ_Init->GetYaxis()->SetTitleOffset(1.5);  
+ Track_XYZ_Init->GetXaxis()->SetTitleOffset(2);
+ Track_XYZ_Init->GetYaxis()->SetTitleOffset(2);  
  Track_XYZ_Init->GetZaxis()->SetTitleOffset(1.5);     
  Track_XYZ_Init->Draw();  
  Track_XYZ_Fin->Draw("SAME");  
