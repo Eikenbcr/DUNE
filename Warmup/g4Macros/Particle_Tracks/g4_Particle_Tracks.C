@@ -99,8 +99,8 @@ Bool_t g4_Particle_Tracks::Process(Long64_t entry)
    for (int i=0; i < hit_start_x.GetSize(); i++){
       if (Event){
          
-  Track_XY_Init->Fill(hit_start_x[i], hit_start_y[i]);   
-  Track_XY_Fin->Fill(hit_end_x[i], hit_end_y[i]);
+//  Track_XY_Init->Fill(hit_start_x[i], hit_start_y[i]);   
+//  Track_XY_Fin->Fill(hit_end_x[i], hit_end_y[i]);
   Track_XZ_Init->Fill(hit_start_x[i], hit_start_z[i]);   
   Track_XZ_Fin->Fill(hit_end_x[i], hit_end_z[i]);       
   Track_YZ_Init->Fill(hit_start_y[i], hit_start_z[i]);   
@@ -145,9 +145,6 @@ void g4_Particle_Tracks::Terminate()
  Track_XY_Init->SetTitle("Track Hits in X-Y Plane");
  c1->SaveAs("Track_XY.pdf");
  c1->SaveAs("Track_XY.png");   
-
-Track_XY_Init->Reset("ICESM");
-Track_XY_Fin->Reset("ICESM");
   
  TLine * line_xy[x_init.size()];
  
