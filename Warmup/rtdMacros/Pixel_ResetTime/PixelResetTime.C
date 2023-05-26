@@ -61,46 +61,46 @@ Bool_t PixelResetTime::Process(Long64_t entry)
        (*event == 0.)
        );  
    
-   for (int i=0; i < pixel_reset[648].size(); i++){ 
+   for (int i=0; i < pixel_reset[598].size(); i++){ 
     if (Event){
             bool tconv_pix1 = (
-       (pixel_reset[648][i] * 1e+6)
+       (pixel_reset[598][i] * 1e+6)
        );       
       Pixel_Reset_1->Fill(tconv_pix1);           
     }
    }
    
-   for (int i=0; i < pixel_reset[649].size(); i++){ 
+   for (int i=0; i < pixel_reset[599].size(); i++){ 
     if (Event){
             bool tconv_pix2 = (
-       (pixel_reset[649][i] * 1e+6)
+       (pixel_reset[599][i] * 1e+6)
        );       
       Pixel_Reset_2->Fill(tconv_pix2);           
     }
    }
 
-      for (int i=0; i < pixel_reset[650].size(); i++){ 
+      for (int i=0; i < pixel_reset[600].size(); i++){ 
     if (Event){
             bool tconv_pix3 = (
-       (pixel_reset[650][i] * 1e+6)
+       (pixel_reset[600][i] * 1e+6)
        );       
       Pixel_Reset_3->Fill(tconv_pix3);           
     }
    }
 
-       for (int i=0; i < pixel_reset[651].size(); i++){ 
+       for (int i=0; i < pixel_reset[601].size(); i++){ 
     if (Event){
             bool tconv_pix4 = (
-       (pixel_reset[651][i] * 1e+6)
+       (pixel_reset[601][i] * 1e+6)
        );       
       Pixel_Reset_4->Fill(tconv_pix4);           
     }
    }  
  
-          for (int i=0; i < pixel_reset[652].size(); i++){ 
+          for (int i=0; i < pixel_reset[602].size(); i++){ 
     if (Event){
             bool tconv_pix5 = (
-       (pixel_reset[652][i] * 1e+6)
+       (pixel_reset[602][i] * 1e+6)
        );       
       Pixel_Reset_5->Fill(tconv_pix5);           
     }
