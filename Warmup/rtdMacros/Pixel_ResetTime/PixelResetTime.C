@@ -64,7 +64,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
    for (int i=0; i < pixel_reset[10].size(); i++){ 
     if (Event){
             bool tconv_pix1 = (
-       (*pixel_reset[10][i] * 1e+6)
+       (pixel_reset[10][i] * 1e+6)
        );       
       Pixel_Reset_1->Fill(tconv_pix1);           
     }
@@ -73,7 +73,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
    for (int i=0; i < pixel_reset[20].size(); i++){ 
     if (Event){
             bool tconv_pix2 = (
-       (*pixel_reset[20][i] * 1e+6)
+       (pixel_reset[20][i] * 1e+6)
        );       
       Pixel_Reset_2->Fill(tconv_pix2);           
     }
@@ -82,7 +82,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
       for (int i=0; i < pixel_reset[3].size(); i++){ 
     if (Event){
             bool tconv_pix3 = (
-       (*pixel_reset[30][i] * 1e+6)
+       (pixel_reset[30][i] * 1e+6)
        );       
       Pixel_Reset_3->Fill(tconv_pix3);           
     }
@@ -91,7 +91,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
        for (int i=0; i < pixel_reset[40].size(); i++){ 
     if (Event){
             bool tconv_pix4 = (
-       (*pixel_reset[40][i] * 1e+6)
+       (pixel_reset[40][i] * 1e+6)
        );       
       Pixel_Reset_4->Fill(tconv_pix4);           
     }
@@ -100,7 +100,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
           for (int i=0; i < pixel_reset[50].size(); i++){ 
     if (Event){
             bool tconv_pix5 = (
-       (*pixel_reset[50][i] * 1e+6)
+       (pixel_reset[50][i] * 1e+6)
        );       
       Pixel_Reset_5->Fill(tconv_pix5);           
     }
