@@ -60,11 +60,13 @@ Bool_t PixelResetTime::Process(Long64_t entry)
          bool Event = (
        (*event == 0.)
        );  
+
+double tconv_pix1[pixel_reset[598].size()];   
    
    for (int i=0; i < pixel_reset[598].size(); i++){ 
     if (Event){
-      double tconv_pix1 = (pixel_reset[598][i]) * 1e+6; 
-      Pixel_Reset_1->Fill(tconv_pix1);           
+      tconv_pix1[i] = (pixel_reset[598][i]) * 1e+6; 
+      Pixel_Reset_1->Fill(tconv_pix1[i]);           
     }
    }
    
