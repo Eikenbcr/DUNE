@@ -44,7 +44,7 @@ Pixel_Reset_4 = new TH1D("qpixrtd events", "Pixel 4 Reset Frequency", 18000, 200
 Pixel_Reset_4->GetXaxis()->SetTitle("time (#mu s)");
 Pixel_Reset_4->GetYaxis()->SetTitle("Resets / (0.1 #mu s)");    
    
-Pixel_Reset_5 = new TH1D("qpixrtd events", "Pixel 4 Reset Frequency", 18000, 200, 2000);
+Pixel_Reset_5 = new TH1D("qpixrtd events", "Pixel 5 Reset Frequency", 18000, 200, 2000);
 Pixel_Reset_5->GetXaxis()->SetTitle("time (#mu s)");
 Pixel_Reset_5->GetYaxis()->SetTitle("Resets / (0.1 #mu s)");     
    
@@ -61,19 +61,19 @@ Bool_t PixelResetTime::Process(Long64_t entry)
        (*event == 0.)
        );  
    
-   for (int i=0; i < pixel_reset[1].size(); i++){ 
+   for (int i=0; i < pixel_reset[10].size(); i++){ 
     if (Event){
             bool tconv_pix1 = (
-       (pixel_reset[1][i] * 1e+6)
+       (*pixel_reset[10][i] * 1e+6)
        );       
       Pixel_Reset_1->Fill(tconv_pix1);           
     }
    }
    
-   for (int i=0; i < pixel_reset[2].size(); i++){ 
+   for (int i=0; i < pixel_reset[20].size(); i++){ 
     if (Event){
             bool tconv_pix2 = (
-       (pixel_reset[2][i] * 1e+6)
+       (*pixel_reset[20][i] * 1e+6)
        );       
       Pixel_Reset_2->Fill(tconv_pix2);           
     }
@@ -82,25 +82,25 @@ Bool_t PixelResetTime::Process(Long64_t entry)
       for (int i=0; i < pixel_reset[3].size(); i++){ 
     if (Event){
             bool tconv_pix3 = (
-       (pixel_reset[3][i] * 1e+6)
+       (*pixel_reset[30][i] * 1e+6)
        );       
       Pixel_Reset_3->Fill(tconv_pix3);           
     }
    }
 
-       for (int i=0; i < pixel_reset[4].size(); i++){ 
+       for (int i=0; i < pixel_reset[40].size(); i++){ 
     if (Event){
             bool tconv_pix4 = (
-       (pixel_reset[4][i] * 1e+6)
+       (*pixel_reset[40][i] * 1e+6)
        );       
       Pixel_Reset_4->Fill(tconv_pix4);           
     }
    }  
  
-          for (int i=0; i < pixel_reset[5].size(); i++){ 
+          for (int i=0; i < pixel_reset[50].size(); i++){ 
     if (Event){
             bool tconv_pix5 = (
-       (pixel_reset[5][i] * 1e+6)
+       (*pixel_reset[50][i] * 1e+6)
        );       
       Pixel_Reset_5->Fill(tconv_pix5);           
     }
