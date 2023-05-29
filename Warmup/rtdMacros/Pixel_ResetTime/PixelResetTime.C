@@ -72,7 +72,7 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
       );          
             
    bool Y_Val_1 = (
-      (pixel_y[i] == 5)
+      (pixel_y[i] == 7)
       );
             
       bool Y_Val_2 = (
