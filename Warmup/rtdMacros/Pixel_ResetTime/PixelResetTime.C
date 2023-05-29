@@ -91,7 +91,7 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
       (pixel_y[i] == 500)
       );       
 
-            if (x_Val){           
+            if (X_Val){           
 std::cout << "i values where xpix=300: " << i << '\n';
             }
             
