@@ -72,23 +72,23 @@ Bool_t PixelResetTime::Process(Long64_t entry)
       );
    
    bool Y_Val_1 = (
-      (pixel_y[i] == 10)
+      (pixel_y[i] == 100)
       );
  
       bool Y_Val_2 = (
-      (pixel_y[i] == 20)
+      (pixel_y[i] == 200)
       );
    
       bool Y_Val_3 = (
-      (pixel_y[i] == 30)
+      (pixel_y[i] == 300)
       );
    
       bool Y_Val_4 = (
-      (pixel_y[i] == 40)
+      (pixel_y[i] == 400)
       );
    
       bool Y_Val_5 = (
-      (pixel_y[i] == 50)
+      (pixel_y[i] == 500)
       );       
             
             if (Event && X_Val && Y_Val_1){
