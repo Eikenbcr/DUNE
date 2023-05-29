@@ -60,41 +60,61 @@ Bool_t PixelResetTime::Process(Long64_t entry)
          bool Event = (
        (*event == 0.)
        );  
-
-   for (int i=0; i < pixel_reset[598].size(); i++){ 
-    if (Event){
-      double tconv_pix1 = (pixel_reset[598][i]) * 1e+6; 
-      Pixel_Reset_1->Fill(tconv_pix1);           
-    }
-   }
    
-   for (int i=0; i < pixel_reset[599].size(); i++){ 
-    if (Event){
-      double tconv_pix2 = (pixel_reset[599][i]) * 1e+6; 
-      Pixel_Reset_2->Fill(tconv_pix2);           
-    }
-   }
-
-      for (int i=0; i < pixel_reset[600].size(); i++){ 
-    if (Event){
-      double tconv_pix3 = (pixel_reset[600][i]) * 1e+6;   
-      Pixel_Reset_3->Fill(tconv_pix3);           
-    }
-   }
-
-       for (int i=0; i < pixel_reset[601].size(); i++){ 
-    if (Event){
-      double tconv_pix4 = (pixel_reset[601][i]) * 1e+6; 
-      Pixel_Reset_4->Fill(tconv_pix4);           
-    }
-   }  
+   bool X_Val = (
+      (*pixel_x[i] == 300)
+      );
+   
+   bool Y_Val_1 = (
+      (*pixel_y[i] == 10)
+      );
  
-          for (int i=0; i < pixel_reset[602].size(); i++){ 
-    if (Event){
-      double tconv_pix5 = (pixel_reset[602][i]) * 1e+6; 
-      Pixel_Reset_5->Fill(tconv_pix5);           
-    }
-   }  
+      bool Y_Val_2 = (
+      (*pixel_y[i] == 20)
+      );
+   
+      bool Y_Val_3 = (
+      (*pixel_y[i] == 30)
+      );
+   
+      bool Y_Val_4 = (
+      (*pixel_y[i] == 40)
+      );
+   
+      bool Y_Val_5 = (
+      (*pixel_y[i] == 50)
+      );
+
+      for (int i=0; i < pixel_reset.GetSize(); i++){
+         for (int j=0; j <pixel_reset[i].GetSize(); j++){
+        
+            if (Event && X_Val && Y_Val_1){
+                double tconv_pix1 = (pixel_reset[i][j]) * 1e+6; 
+                Pixel_Reset_1->Fill(tconv_pix1);           
+            }    
+
+            if (Event && X_Val && Y_Val_2){
+                double tconv_pix2 = (pixel_reset[i][j]) * 1e+6; 
+                Pixel_Reset_2->Fill(tconv_pix2);           
+            }     
+            
+            if (Event && X_Val && Y_Val_3){
+                double tconv_pix3 = (pixel_reset[i][j]) * 1e+6; 
+                Pixel_Reset_3->Fill(tconv_pix3);           
+            }     
+            
+            if (Event && X_Val && Y_Val_4){
+                double tconv_pix4 = (pixel_reset[i][j]) * 1e+6; 
+                Pixel_Reset_4->Fill(tconv_pix4);           
+            }  
+            
+            if (Event && X_Val && Y_Val_5){
+                double tconv_pix5 = (pixel_reset[i][j]) * 1e+6; 
+                Pixel_Reset_5->Fill(tconv_pix5);           
+            }                  
+      }
+         }
+
    
    return kTRUE;
 }
