@@ -65,7 +65,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
          for (int j=0; j <pixel_reset[i].size(); j++){
                
    bool X_Val = (
-      (pixel_x[i] == 300)
+      (pixel_x[i] == 301)
       );
    
    bool Y_Val_1 = (
