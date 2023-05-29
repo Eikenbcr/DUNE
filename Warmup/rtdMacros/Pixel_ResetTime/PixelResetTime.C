@@ -61,7 +61,9 @@ Bool_t PixelResetTime::Process(Long64_t entry)
        (*event == 0.)
        );  
 
-      for (int i=0; i < pixel_reset.size(); i++){
+    std::cout << "pixel reset size: " << pixel_reset.GetSize() << '\n';
+   
+      for (int i=0; i < pixel_reset.GetSize(); i++){
          for (int j=0; j <pixel_reset[i].size(); j++){
 
    bool X_Val = (
