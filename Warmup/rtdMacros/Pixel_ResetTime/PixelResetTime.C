@@ -66,6 +66,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
       for (int i=0; i < pixel_reset.GetSize(); i++){
          for (int j=0; j <pixel_reset[i].size(); j++){
             for (int k=0; k <pixel_x.GetSize(); k++){
+               
    bool X_Val = (
       (pixel_x[k] == 300)
       );
@@ -116,6 +117,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
             }                  
       }
          }
+            }
 
    
    return kTRUE;
