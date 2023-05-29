@@ -63,11 +63,10 @@ Bool_t PixelResetTime::Process(Long64_t entry)
 
 if (Event){
 std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n'; 
-std::cout << "pix# with largest number of resets: " << pixel_reset.GetSize() << '\n';    
-}
+std::cout << "pix# with largest number of resets: " << pixel_reset.max_size() << '\n';    
    
       for (int i=0; i < pixel_x.GetSize(); i++){
-         for (int j=0; j <pixel_reset[i].max_size(); j++){
+         for (int j=0; j <pixel_reset[i].size(); j++){
                
    bool X_Val = (
       (pixel_x[i] == 300)
@@ -93,32 +92,33 @@ std::cout << "pix# with largest number of resets: " << pixel_reset.GetSize() << 
       (pixel_y[i] == 500)
       );       
             
-            if (Event && X_Val && Y_Val_1){
+            if (X_Val && Y_Val_1){
                 double tconv_pix1 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_1->Fill(tconv_pix1);           
             }    
 
-            if (Event && X_Val && Y_Val_2){
+            if (X_Val && Y_Val_2){
                 double tconv_pix2 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_2->Fill(tconv_pix2);           
             }     
             
-            if (Event && X_Val && Y_Val_3){
+            if (X_Val && Y_Val_3){
                 double tconv_pix3 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_3->Fill(tconv_pix3);           
             }     
             
-            if (Event && X_Val && Y_Val_4){
+            if (X_Val && Y_Val_4){
                 double tconv_pix4 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_4->Fill(tconv_pix4);           
             }  
             
-            if (Event && X_Val && Y_Val_5){
+            if (X_Val && Y_Val_5){
                 double tconv_pix5 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_5->Fill(tconv_pix5);           
             }                  
       }
          }
+}
             
 
    
