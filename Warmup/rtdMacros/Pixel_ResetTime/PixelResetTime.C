@@ -65,7 +65,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
          for (int j=0; j <pixel_reset[i].size(); j++){
                
    bool X_Val = (
-      (pixel_x[i] == 300)
+      (pixel_x[i] == 299)
       );
    
    bool Y_Val_1 = (
@@ -132,6 +132,8 @@ void PixelResetTime::Terminate()
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
 
+std::cout << "Pixel 1 Reset Mean: " << Pixel_Reset_1->GetMean() << '\n';
+   
 Pixel_Reset_1->GetXaxis()->CenterTitle(true);
 Pixel_Reset_1->GetXaxis()->SetTitleSize(20);
 Pixel_Reset_1->GetXaxis()->SetTitleFont(43);
