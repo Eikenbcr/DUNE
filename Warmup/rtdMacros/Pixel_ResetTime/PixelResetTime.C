@@ -90,6 +90,10 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
       bool Y_Val_5 = (
       (pixel_y[i] == 500)
       );       
+
+            if (x_Val){           
+std::cout << "i values where xpix=300: " << i << '\n';
+            }
             
             if (X_Val && Y_Val_1){
                 double tconv_pix1 = (pixel_reset[i][j]) * 1e+6; 
