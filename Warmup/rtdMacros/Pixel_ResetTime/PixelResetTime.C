@@ -60,7 +60,10 @@ Bool_t PixelResetTime::Process(Long64_t entry)
          bool Event = (
        (*event == 0.)
        );  
-   
+
+      for (int i=0; i < pixel_reset.GetSize(); i++){
+         for (int j=0; j <pixel_reset[i].size(); j++){
+
    bool X_Val = (
       (*pixel_x[i] == 300)
       );
@@ -83,11 +86,8 @@ Bool_t PixelResetTime::Process(Long64_t entry)
    
       bool Y_Val_5 = (
       (*pixel_y[i] == 50)
-      );
-
-      for (int i=0; i < pixel_reset.GetSize(); i++){
-         for (int j=0; j <pixel_reset[i].GetSize(); j++){
-        
+      );       
+            
             if (Event && X_Val && Y_Val_1){
                 double tconv_pix1 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_1->Fill(tconv_pix1);           
