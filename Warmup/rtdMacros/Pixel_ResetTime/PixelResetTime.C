@@ -28,23 +28,23 @@ void PixelResetTime::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
 
-Pixel_Reset_1 = new TH1D("qpixrtd events", "Pixel 1 Reset Frequency", 18000, 200, 2000);
+Pixel_Reset_1 = new TH1D("qpixrtd events", "Pixel 1 Reset Frequency", 4000, 200, 600);
 Pixel_Reset_1->GetXaxis()->SetTitle("time (#mu s)");
 Pixel_Reset_1->GetYaxis()->SetTitle("Resets / (0.1 #mu s)");
    
-Pixel_Reset_2 = new TH1D("qpixrtd events", "Pixel 2 Reset Frequency", 18000, 200, 2000);
+Pixel_Reset_2 = new TH1D("qpixrtd events", "Pixel 2 Reset Frequency", 4000, 200, 600);
 Pixel_Reset_2->GetXaxis()->SetTitle("time (#mu s)");
 Pixel_Reset_2->GetYaxis()->SetTitle("Resets / (0.1 #mu s)");   
    
-Pixel_Reset_3 = new TH1D("qpixrtd events", "Pixel 3 Reset Frequency", 18000, 200, 2000);
+Pixel_Reset_3 = new TH1D("qpixrtd events", "Pixel 3 Reset Frequency", 4000, 200, 600);
 Pixel_Reset_3->GetXaxis()->SetTitle("time (#mu s)");
 Pixel_Reset_3->GetYaxis()->SetTitle("Resets / (0.1 #mu s)");      
    
-Pixel_Reset_4 = new TH1D("qpixrtd events", "Pixel 4 Reset Frequency", 18000, 200, 2000);
+Pixel_Reset_4 = new TH1D("qpixrtd events", "Pixel 4 Reset Frequency", 4000, 200, 600);
 Pixel_Reset_4->GetXaxis()->SetTitle("time (#mu s)");
 Pixel_Reset_4->GetYaxis()->SetTitle("Resets / (0.1 #mu s)");    
    
-Pixel_Reset_5 = new TH1D("qpixrtd events", "Pixel 5 Reset Frequency", 18000, 200, 2000);
+Pixel_Reset_5 = new TH1D("qpixrtd events", "Pixel 5 Reset Frequency", 4000, 200, 600);
 Pixel_Reset_5->GetXaxis()->SetTitle("time (#mu s)");
 Pixel_Reset_5->GetYaxis()->SetTitle("Resets / (0.1 #mu s)");     
    
