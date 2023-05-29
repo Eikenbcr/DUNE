@@ -64,17 +64,9 @@ Bool_t PixelResetTime::Process(Long64_t entry)
       for (int i=0; i < pixel_x.GetSize(); i++){
          for (int j=0; j <pixel_reset[i].size(); j++){
                
-   bool X_Val_1 = (
+   bool X_Val = (
       (pixel_x[i] == 300)
-      );
-   
-   bool X_Val_2 = (
-      (pixel_x[i] == 298)
-      );            
-
-    bool X_Val_3 = (
-      (pixel_x[i] == 296)
-      );                   
+      );          
             
    bool Y_Val_1 = (
       (pixel_y[i] == 100)
@@ -96,28 +88,28 @@ Bool_t PixelResetTime::Process(Long64_t entry)
       (pixel_y[i] == 1000)
       );       
             
-            if (Event && X_Val_1 && Y_Val_1){
+            if (Event && X_Val && Y_Val_1){
                 std::cout << "pixel reset size: " << pixel_reset[i].size() << '\n';
                 double tconv_pix1 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_1->Fill(tconv_pix1);           
             }    
 
-            if (Event && X_Val_1 && Y_Val_2){
+            if (Event && X_Val && Y_Val_2){
                 double tconv_pix2 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_2->Fill(tconv_pix2);           
             }     
             
-            if (Event && X_Val_2 && Y_Val_3){
+            if (Event && X_Val && Y_Val_3){
                 double tconv_pix3 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_3->Fill(tconv_pix3);           
             }     
             
-            if (Event && X_Val_2 && Y_Val_4){
+            if (Event && X_Val && Y_Val_4){
                 double tconv_pix4 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_4->Fill(tconv_pix4);           
             }  
             
-            if (Event && X_Val_3 && Y_Val_5){
+            if (Event && X_Val && Y_Val_5){
                 double tconv_pix5 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_5->Fill(tconv_pix5);           
             }                  
