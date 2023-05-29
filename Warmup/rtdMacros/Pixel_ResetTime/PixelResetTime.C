@@ -63,32 +63,31 @@ Bool_t PixelResetTime::Process(Long64_t entry)
 
     std::cout << "pixel reset size: " << pixel_reset.GetSize() << '\n';
    
-      for (int i=0; i < pixel_reset.GetSize(); i++){
+      for (int i=0; i < pixel_x.GetSize(); i++){
          for (int j=0; j <pixel_reset[i].size(); j++){
-            for (int k=0; k <pixel_x.GetSize(); k++){
                
    bool X_Val = (
-      (pixel_x[k] == 300)
+      (pixel_x[i] == 300)
       );
    
    bool Y_Val_1 = (
-      (pixel_y[k] == 10)
+      (pixel_y[i] == 10)
       );
  
       bool Y_Val_2 = (
-      (pixel_y[k] == 20)
+      (pixel_y[i] == 20)
       );
    
       bool Y_Val_3 = (
-      (pixel_y[k] == 30)
+      (pixel_y[i] == 30)
       );
    
       bool Y_Val_4 = (
-      (pixel_y[k] == 40)
+      (pixel_y[i] == 40)
       );
    
       bool Y_Val_5 = (
-      (pixel_y[k] == 50)
+      (pixel_y[i] == 50)
       );       
             
             if (Event && X_Val && Y_Val_1){
@@ -117,7 +116,7 @@ Bool_t PixelResetTime::Process(Long64_t entry)
             }                  
       }
          }
-            }
+            
 
    
    return kTRUE;
