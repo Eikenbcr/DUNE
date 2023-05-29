@@ -69,23 +69,23 @@ Bool_t PixelResetTime::Process(Long64_t entry)
       );
    
    bool Y_Val_1 = (
-      (pixel_y[i] == 10)
+      (pixel_y[i] == 20)
       );
  
       bool Y_Val_2 = (
-      (pixel_y[i] == 20)
-      );
-   
-      bool Y_Val_3 = (
-      (pixel_y[i] == 30)
-      );
-   
-      bool Y_Val_4 = (
       (pixel_y[i] == 40)
       );
    
+      bool Y_Val_3 = (
+      (pixel_y[i] == 60)
+      );
+   
+      bool Y_Val_4 = (
+      (pixel_y[i] == 80)
+      );
+   
       bool Y_Val_5 = (
-      (pixel_y[i] == 50)
+      (pixel_y[i] == 100)
       );       
             
             if (Event && X_Val && Y_Val_1){
@@ -132,7 +132,17 @@ void PixelResetTime::Terminate()
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
 
-std::cout << "Pixel 1 Reset Mean: " << Pixel_Reset_1->GetMean() << '\n';
+
+double PR1L =  Pixel_Reset_1->GetMean() - 1;
+double PR1H =  Pixel_Reset_1->GetMean() + 1;   
+double PR2L =  Pixel_Reset_2->GetMean() - 1;
+double PR2H =  Pixel_Reset_2->GetMean() + 1; 
+double PR3L =  Pixel_Reset_3->GetMean() - 1;
+double PR3H =  Pixel_Reset_3->GetMean() + 1;      
+double PR4L =  Pixel_Reset_4->GetMean() - 1;
+double PR4H =  Pixel_Reset_4->GetMean() + 1;      
+double PR5L =  Pixel_Reset_5->GetMean() - 1;
+double PR5H =  Pixel_Reset_5->GetMean() + 1;      
    
 Pixel_Reset_1->GetXaxis()->CenterTitle(true);
 Pixel_Reset_1->GetXaxis()->SetTitleSize(20);
@@ -142,7 +152,7 @@ Pixel_Reset_1->GetXaxis()->SetLabelSize(0.05);
 Pixel_Reset_1->GetYaxis()->SetTitleSize(20);
 Pixel_Reset_1->GetYaxis()->SetTitleFont(43);
 Pixel_Reset_1->GetYaxis()->SetLabelSize(0.05);
-Pixel_Reset_1->GetXaxis()->SetRange(Pixel_Reset_1->GetMean()-1,Pixel_Reset_1->GetMean()+1);
+Pixel_Reset_1->GetXaxis()->SetRange(PR1L,PR1H);
 Pixel_Reset_1->Draw();
 c1->SaveAs("Pixel_Reset_1.pdf");
 c1->SaveAs("Pixel_Reset_1.png");
@@ -155,7 +165,7 @@ Pixel_Reset_2->GetXaxis()->SetLabelSize(0.05);
 Pixel_Reset_2->GetYaxis()->SetTitleSize(20);
 Pixel_Reset_2->GetYaxis()->SetTitleFont(43);
 Pixel_Reset_2->GetYaxis()->SetLabelSize(0.05);
-Pixel_Reset_2->GetXaxis()->SetRange(Pixel_Reset_2->GetMean()-1,Pixel_Reset_2->GetMean()+1);   
+Pixel_Reset_2->GetXaxis()->SetRange(PR2L,PR2H);
 Pixel_Reset_2->Draw();
 c1->SaveAs("Pixel_Reset_2.pdf");
 c1->SaveAs("Pixel_Reset_2.png");
@@ -168,7 +178,7 @@ Pixel_Reset_3->GetXaxis()->SetLabelSize(0.05);
 Pixel_Reset_3->GetYaxis()->SetTitleSize(20);
 Pixel_Reset_3->GetYaxis()->SetTitleFont(43);
 Pixel_Reset_3->GetYaxis()->SetLabelSize(0.05);
-Pixel_Reset_3->GetXaxis()->SetRange(Pixel_Reset_4->GetMean()-1,Pixel_Reset_4->GetMean()+1);       
+Pixel_Reset_3->GetXaxis()->SetRange(PR3L,PR3H);   
 Pixel_Reset_3->Draw();  
 c1->SaveAs("Pixel_Reset_3.pdf");
 c1->SaveAs("Pixel_Reset_3.png");   
@@ -181,7 +191,7 @@ Pixel_Reset_4->GetXaxis()->SetLabelSize(0.05);
 Pixel_Reset_4->GetYaxis()->SetTitleSize(20);
 Pixel_Reset_4->GetYaxis()->SetTitleFont(43);
 Pixel_Reset_4->GetYaxis()->SetLabelSize(0.05);
-Pixel_Reset_4->GetXaxis()->SetRange(Pixel_Reset_4->GetMean()-1,Pixel_Reset_4->GetMean()+1);       
+Pixel_Reset_4->GetXaxis()->SetRange(PR4L,PR4H);
 Pixel_Reset_4->Draw();   
 c1->SaveAs("Pixel_Reset_4.pdf");
 c1->SaveAs("Pixel_Reset_4.png");    
@@ -194,7 +204,7 @@ Pixel_Reset_5->GetXaxis()->SetLabelSize(0.05);
 Pixel_Reset_5->GetYaxis()->SetTitleSize(20);
 Pixel_Reset_5->GetYaxis()->SetTitleFont(43);
 Pixel_Reset_5->GetYaxis()->SetLabelSize(0.05);
-Pixel_Reset_5->GetXaxis()->SetRange(Pixel_Reset_5->GetMean()-1,Pixel_Reset_5->GetMean()+1);          
+Pixel_Reset_5->GetXaxis()->SetRange(PR5L,PR5H);      
 Pixel_Reset_5->Draw();
 c1->SaveAs("Pixel_Reset_5.pdf");
 c1->SaveAs("Pixel_Reset_5.png");  
