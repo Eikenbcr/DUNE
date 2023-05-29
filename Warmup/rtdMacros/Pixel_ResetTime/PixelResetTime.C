@@ -62,11 +62,12 @@ Bool_t PixelResetTime::Process(Long64_t entry)
        );  
 
 if (Event){
-std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';   
+std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n'; 
+std::cout << "pix# with largest number of resets: " << pixel_reset.GetSize() << '\n';    
 }
    
       for (int i=0; i < pixel_x.GetSize(); i++){
-         for (int j=0; j <pixel_reset[i].size(); j++){
+         for (int j=0; j <pixel_reset[i].max_size(); j++){
                
    bool X_Val = (
       (pixel_x[i] == 300)
