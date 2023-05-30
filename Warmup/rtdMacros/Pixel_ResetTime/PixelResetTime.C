@@ -136,7 +136,7 @@ void PixelResetTime::Terminate()
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
 
-TF1 *FitFunc = new TF1("FitFunc",Gaussian_fit,495, 515,3);
+TF1 *FitFunc = new TF1("FitFunc",Gaussian_fit,400, 600,3);
 FitFunc->SetParameter(0, 1);
 FitFunc->SetParameter(3, 0.3);   
    
@@ -167,6 +167,7 @@ c1->SaveAs("Pixel_Reset_1.png");
 
 c1->Clear();   
 FitFunc->SetParameter(1, Pixel_Reset_1->GetMean()); 
+FitFunc->SetParLimits(1, Pixel_Reset_1->GetMean()-1, Pixel_Reset_1->GetMean()+1);    
 Pixel_Reset_1->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_1_Fit.pdf");
 c1->SaveAs("Pixel_Reset_1_Fit.png");
@@ -188,6 +189,7 @@ c1->SaveAs("Pixel_Reset_2.png");
 
 c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_2->GetMean()); 
+FitFunc->SetParLimits(1, Pixel_Reset_2->GetMean()-1, Pixel_Reset_2->GetMean()+1);       
 Pixel_Reset_2->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_2_Fit.pdf");
 c1->SaveAs("Pixel_Reset_2_Fit.png");
@@ -209,6 +211,7 @@ c1->SaveAs("Pixel_Reset_3.png");
 
 c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_3->GetMean()); 
+FitFunc->SetParLimits(1, Pixel_Reset_3->GetMean()-1, Pixel_Reset_3->GetMean()+1);       
 Pixel_Reset_3->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_3_Fit.pdf");
 c1->SaveAs("Pixel_Reset_3_Fit.png");   
@@ -230,6 +233,7 @@ c1->SaveAs("Pixel_Reset_4.png");
 
 c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_4->GetMean()); 
+FitFunc->SetParLimits(1, Pixel_Reset_4->GetMean()-1, Pixel_Reset_4->GetMean()+1);    
 Pixel_Reset_4->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_4_Fit.pdf");
 c1->SaveAs("Pixel_Reset_4_Fit.png");   
@@ -251,6 +255,7 @@ c1->SaveAs("Pixel_Reset_5.png");
 
 c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_5->GetMean()); 
+FitFunc->SetParLimits(1, Pixel_Reset_5->GetMean()-1, Pixel_Reset_5->GetMean()+1);       
 Pixel_Reset_5->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_5_Fit.pdf");
 c1->SaveAs("Pixel_Reset_5_Fit.png");   
