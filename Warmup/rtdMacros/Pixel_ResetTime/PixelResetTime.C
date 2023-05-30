@@ -138,9 +138,7 @@ void PixelResetTime::Terminate()
 
 TF1 *FitFunc = new TF1("FitFunc",Gaussian_fit,495, 515,3);
 FitFunc->SetParameter(0, 1);
-FitFunc->SetParLimits(0, 0.,40.);   
 FitFunc->SetParameter(3, 0.3);   
-FitFunc->SetParLimits(3, 0.,1.);   
    
 double PR1L =  Pixel_Reset_1->GetMean() - 2;
 double PR1H =  Pixel_Reset_1->GetMean() + 2;   
@@ -173,7 +171,7 @@ Pixel_Reset_1->Fit("FitFunc");
 c1->SaveAs("Pixel_Reset_1_Fit.pdf");
 c1->SaveAs("Pixel_Reset_1_Fit.png");
 c1->Clear();   
-   
+
 Pixel_Reset_2->GetXaxis()->CenterTitle(true);
 Pixel_Reset_2->GetXaxis()->SetTitleSize(20);
 Pixel_Reset_2->GetXaxis()->SetTitleFont(43);
