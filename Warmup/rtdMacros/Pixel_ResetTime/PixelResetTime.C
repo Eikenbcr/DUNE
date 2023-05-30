@@ -163,8 +163,8 @@ Pixel_Reset_1->Draw();
 c1->SaveAs("Pixel_Reset_1.pdf");
 c1->SaveAs("Pixel_Reset_1.png");
 
-FitFunc->SetParameter(2, Pixel_Reset_1->GetRMS());      
-FitFunc->SetParameter(1, Pixel_Reset_1->GetMean()); 
+FitFunc->SetParameter(1, Pixel_Reset_1->GetRMS());      
+FitFunc->SetParameter(0, Pixel_Reset_1->GetMean()); 
 FitFunc->Draw("SAME");  
 c1->SaveAs("Pixel_Reset_1_Fit.pdf");
 c1->SaveAs("Pixel_Reset_1_Fit.png");
