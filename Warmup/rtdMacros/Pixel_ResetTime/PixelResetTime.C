@@ -162,7 +162,6 @@ Pixel_Reset_1->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_1->Draw();
 c1->SaveAs("Pixel_Reset_1.pdf");
 c1->SaveAs("Pixel_Reset_1.png");
-
 FitFunc->SetParameter(1, Pixel_Reset_1->GetRMS());      
 FitFunc->SetParameter(0, Pixel_Reset_1->GetMean()); 
 FitFunc->Draw("SAME");  
@@ -182,17 +181,13 @@ Pixel_Reset_2->GetXaxis()->SetRangeUser(PR2L,PR2H);
 Pixel_Reset_2->GetXaxis()->SetNdivisions(6); 
 Pixel_Reset_2->Draw();
 c1->SaveAs("Pixel_Reset_2.pdf");
-c1->SaveAs("Pixel_Reset_2.png");
-
-c1->Clear(); 
-FitFunc->SetParameter(0, Pixel_Reset_2->GetEntries());  
-FitFunc->SetParameter(2, Pixel_Reset_2->GetRMS());       
-FitFunc->SetParameter(1, Pixel_Reset_2->GetMean()); 
-FitFunc->SetParLimits(1, Pixel_Reset_2->GetMean()-0.1, Pixel_Reset_2->GetMean()+0.1);       
-Pixel_Reset_2->Fit("FitFunc");  
+c1->SaveAs("Pixel_Reset_2.png"); 
+FitFunc->SetParameter(1, Pixel_Reset_2->GetRMS());      
+FitFunc->SetParameter(0, Pixel_Reset_2->GetMean()); 
+FitFunc->Draw("SAME");  
 c1->SaveAs("Pixel_Reset_2_Fit.pdf");
 c1->SaveAs("Pixel_Reset_2_Fit.png");
-c1->Clear();  
+c1->Clear();   
    
 Pixel_Reset_3->GetXaxis()->CenterTitle(true);
 Pixel_Reset_3->GetXaxis()->SetTitleSize(20);
@@ -207,15 +202,11 @@ Pixel_Reset_3->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_3->Draw();  
 c1->SaveAs("Pixel_Reset_3.pdf");
 c1->SaveAs("Pixel_Reset_3.png");   
-
-c1->Clear();
-FitFunc->SetParameter(0, Pixel_Reset_3->GetEntries());  
-FitFunc->SetParameter(2, Pixel_Reset_3->GetRMS());       
-FitFunc->SetParameter(1, Pixel_Reset_3->GetMean()); 
-FitFunc->SetParLimits(1, Pixel_Reset_3->GetMean()-0.1, Pixel_Reset_3->GetMean()+0.1);       
-Pixel_Reset_3->Fit("FitFunc");  
+FitFunc->SetParameter(1, Pixel_Reset_3->GetRMS());      
+FitFunc->SetParameter(0, Pixel_Reset_3->GetMean()); 
+FitFunc->Draw("SAME");  
 c1->SaveAs("Pixel_Reset_3_Fit.pdf");
-c1->SaveAs("Pixel_Reset_3_Fit.png");   
+c1->SaveAs("Pixel_Reset_3_Fit.png");
 c1->Clear();   
    
 Pixel_Reset_4->GetXaxis()->CenterTitle(true);
@@ -231,15 +222,11 @@ Pixel_Reset_4->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_4->Draw();   
 c1->SaveAs("Pixel_Reset_4.pdf");
 c1->SaveAs("Pixel_Reset_4.png");    
-
-c1->Clear();      
-FitFunc->SetParameter(0, Pixel_Reset_4->GetEntries());  
-FitFunc->SetParameter(2, Pixel_Reset_4->GetRMS());       
-FitFunc->SetParameter(1, Pixel_Reset_4->GetMean()); 
-FitFunc->SetParLimits(1, Pixel_Reset_4->GetMean()-0.1, Pixel_Reset_4->GetMean()+0.1);    
-Pixel_Reset_4->Fit("FitFunc");  
+FitFunc->SetParameter(1, Pixel_Reset_4->GetRMS());      
+FitFunc->SetParameter(0, Pixel_Reset_4->GetMean()); 
+FitFunc->Draw("SAME");  
 c1->SaveAs("Pixel_Reset_4_Fit.pdf");
-c1->SaveAs("Pixel_Reset_4_Fit.png");   
+c1->SaveAs("Pixel_Reset_4_Fit.png");
 c1->Clear();   
    
 Pixel_Reset_5->GetXaxis()->CenterTitle(true);
@@ -255,13 +242,10 @@ Pixel_Reset_5->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_5->Draw();
 c1->SaveAs("Pixel_Reset_5.pdf");
 c1->SaveAs("Pixel_Reset_5.png");  
-
-c1->Clear();
-FitFunc->SetParameter(0, Pixel_Reset_5->GetEntries());  
-FitFunc->SetParameter(2, Pixel_Reset_5->GetRMS());       
-FitFunc->SetParameter(1, Pixel_Reset_5->GetMean()); 
-FitFunc->SetParLimits(1, Pixel_Reset_5->GetMean()-0.1, Pixel_Reset_5->GetMean()+0.1);       
-Pixel_Reset_5->Fit("FitFunc");  
+FitFunc->SetParameter(1, Pixel_Reset_5->GetRMS());      
+FitFunc->SetParameter(0, Pixel_Reset_5->GetMean()); 
+FitFunc->Draw("SAME");  
 c1->SaveAs("Pixel_Reset_5_Fit.pdf");
-c1->SaveAs("Pixel_Reset_5_Fit.png");   
+c1->SaveAs("Pixel_Reset_5_Fit.png");
+c1->Clear();   
 }
