@@ -136,9 +136,11 @@ void PixelResetTime::Terminate()
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
 
-TF1 *FitFunc = new TF1("FitFunc",Gaussian_fit,490, 520,3);
+TF1 *FitFunc = new TF1("FitFunc",Gaussian_fit,495, 515,3);
 FitFunc->SetParameter(0, 1);
+FitFunc->SetParLimits(0, 0.,40.);   
 FitFunc->SetParameter(3, 0.3);   
+FitFunc->SetParLimits(3, 0.,1.);   
    
 double PR1L =  Pixel_Reset_1->GetMean() - 2;
 double PR1H =  Pixel_Reset_1->GetMean() + 2;   
