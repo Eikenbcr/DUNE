@@ -162,11 +162,13 @@ Pixel_Reset_1->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_1->Draw();
 c1->SaveAs("Pixel_Reset_1.pdf");
 c1->SaveAs("Pixel_Reset_1.png");
-   
+
+c1->Clear();   
 FitFunc->SetParameter(1, Pixel_Reset_1->GetMean()); 
-Pixel_Reset_1->Fit("FitFunc", "E");  
+Pixel_Reset_1->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_1_Fit.pdf");
 c1->SaveAs("Pixel_Reset_1_Fit.png");
+c1->Clear();   
    
 Pixel_Reset_2->GetXaxis()->CenterTitle(true);
 Pixel_Reset_2->GetXaxis()->SetTitleSize(20);
@@ -181,11 +183,13 @@ Pixel_Reset_2->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_2->Draw();
 c1->SaveAs("Pixel_Reset_2.pdf");
 c1->SaveAs("Pixel_Reset_2.png");
- 
+
+c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_2->GetMean()); 
-Pixel_Reset_2->Fit("FitFunc", "E");  
+Pixel_Reset_2->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_2_Fit.pdf");
 c1->SaveAs("Pixel_Reset_2_Fit.png");
+c1->Clear();  
    
 Pixel_Reset_3->GetXaxis()->CenterTitle(true);
 Pixel_Reset_3->GetXaxis()->SetTitleSize(20);
@@ -201,10 +205,12 @@ Pixel_Reset_3->Draw();
 c1->SaveAs("Pixel_Reset_3.pdf");
 c1->SaveAs("Pixel_Reset_3.png");   
 
+c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_3->GetMean()); 
-Pixel_Reset_3->Fit("FitFunc", "E");  
+Pixel_Reset_3->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_3_Fit.pdf");
 c1->SaveAs("Pixel_Reset_3_Fit.png");   
+c1->Clear();   
    
 Pixel_Reset_4->GetXaxis()->CenterTitle(true);
 Pixel_Reset_4->GetXaxis()->SetTitleSize(20);
@@ -220,10 +226,12 @@ Pixel_Reset_4->Draw();
 c1->SaveAs("Pixel_Reset_4.pdf");
 c1->SaveAs("Pixel_Reset_4.png");    
 
+c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_4->GetMean()); 
-Pixel_Reset_4->Fit("FitFunc", "E");  
+Pixel_Reset_4->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_4_Fit.pdf");
 c1->SaveAs("Pixel_Reset_4_Fit.png");   
+c1->Clear();   
    
 Pixel_Reset_5->GetXaxis()->CenterTitle(true);
 Pixel_Reset_5->GetXaxis()->SetTitleSize(20);
@@ -238,9 +246,10 @@ Pixel_Reset_5->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_5->Draw();
 c1->SaveAs("Pixel_Reset_5.pdf");
 c1->SaveAs("Pixel_Reset_5.png");  
-   
+
+c1->Clear();      
 FitFunc->SetParameter(1, Pixel_Reset_5->GetMean()); 
-Pixel_Reset_5->Fit("FitFunc", "E");  
+Pixel_Reset_5->Fit("FitFunc");  
 c1->SaveAs("Pixel_Reset_5_Fit.pdf");
 c1->SaveAs("Pixel_Reset_5_Fit.png");   
 }
