@@ -136,16 +136,16 @@ void PixelResetTime::Terminate()
   c1->SetLeftMargin(0.15);
 
 
-double PR1L =  Pixel_Reset_1->GetMinimum() - 1;
-double PR1H =  Pixel_Reset_1->GetMaximum() + 1;   
-double PR2L =  Pixel_Reset_2->GetMinimum() - 1;
-double PR2H =  Pixel_Reset_2->GetMaximum() + 1; 
-double PR3L =  Pixel_Reset_3->GetMinimum() - 1;
-double PR3H =  Pixel_Reset_3->GetMaximum() + 1;      
-double PR4L =  Pixel_Reset_4->GetMinimum() - 1;
-double PR4H =  Pixel_Reset_4->GetMaximum() + 1;      
-double PR5L =  Pixel_Reset_5->GetMinimum() - 1;
-double PR5H =  Pixel_Reset_5->GetMaximum() + 1;      
+double PR1L =  Pixel_Reset_1->GetMean() - 2;
+double PR1H =  Pixel_Reset_1->GetMean() + 2;   
+double PR2L =  Pixel_Reset_2->GetMean() - 2;
+double PR2H =  Pixel_Reset_2->GetMean() + 2; 
+double PR3L =  Pixel_Reset_3->GetMean() - 2;
+double PR3H =  Pixel_Reset_3->GetMean() + 2;      
+double PR4L =  Pixel_Reset_4->GetMean() - 2;
+double PR4H =  Pixel_Reset_4->GetMean() + 2;      
+double PR5L =  Pixel_Reset_5->GetMean() - 2;
+double PR5H =  Pixel_Reset_5->GetMean() + 2;      
    
 Pixel_Reset_1->GetXaxis()->CenterTitle(true);
 Pixel_Reset_1->GetXaxis()->SetTitleSize(20);
