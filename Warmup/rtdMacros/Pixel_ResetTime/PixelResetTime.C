@@ -1,5 +1,6 @@
 #define PixelResetTime_cxx
 #include "PixelResetTime.h"
+#include "GaussianFit.C"
 
 #include <TH1D.h>
 #include <TH2D.h>
@@ -135,6 +136,7 @@ void PixelResetTime::Terminate()
   c1->SetBottomMargin(0.2);
   c1->SetLeftMargin(0.15);
 
+TF1 *FitFunc = new TF1("FitFunc",Gaussian_fit,490, 520,3);
 
 double PR1L =  Pixel_Reset_1->GetMean() - 2;
 double PR1H =  Pixel_Reset_1->GetMean() + 2;   
@@ -161,6 +163,11 @@ Pixel_Reset_1->Draw();
 c1->SaveAs("Pixel_Reset_1.pdf");
 c1->SaveAs("Pixel_Reset_1.png");
    
+FitFunc->SetParameter(1, Pixel_Reset_1->GetMean()); 
+Pixel_Reset_1->Fit("FitFunc", "E");  
+c1->SaveAs("Pixel_Reset_1_Fit.pdf");
+c1->SaveAs("Pixel_Reset_1_Fit.png");
+   
 Pixel_Reset_2->GetXaxis()->CenterTitle(true);
 Pixel_Reset_2->GetXaxis()->SetTitleSize(20);
 Pixel_Reset_2->GetXaxis()->SetTitleFont(43);
@@ -174,6 +181,11 @@ Pixel_Reset_2->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_2->Draw();
 c1->SaveAs("Pixel_Reset_2.pdf");
 c1->SaveAs("Pixel_Reset_2.png");
+ 
+FitFunc->SetParameter(1, Pixel_Reset_2->GetMean()); 
+Pixel_Reset_2->Fit("FitFunc", "E");  
+c1->SaveAs("Pixel_Reset_2_Fit.pdf");
+c1->SaveAs("Pixel_Reset_2_Fit.png");
    
 Pixel_Reset_3->GetXaxis()->CenterTitle(true);
 Pixel_Reset_3->GetXaxis()->SetTitleSize(20);
@@ -188,6 +200,11 @@ Pixel_Reset_3->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_3->Draw();  
 c1->SaveAs("Pixel_Reset_3.pdf");
 c1->SaveAs("Pixel_Reset_3.png");   
+
+FitFunc->SetParameter(1, Pixel_Reset_3->GetMean()); 
+Pixel_Reset_3->Fit("FitFunc", "E");  
+c1->SaveAs("Pixel_Reset_3_Fit.pdf");
+c1->SaveAs("Pixel_Reset_3_Fit.png");   
    
 Pixel_Reset_4->GetXaxis()->CenterTitle(true);
 Pixel_Reset_4->GetXaxis()->SetTitleSize(20);
@@ -203,6 +220,11 @@ Pixel_Reset_4->Draw();
 c1->SaveAs("Pixel_Reset_4.pdf");
 c1->SaveAs("Pixel_Reset_4.png");    
 
+FitFunc->SetParameter(1, Pixel_Reset_4->GetMean()); 
+Pixel_Reset_4->Fit("FitFunc", "E");  
+c1->SaveAs("Pixel_Reset_4_Fit.pdf");
+c1->SaveAs("Pixel_Reset_4_Fit.png");   
+   
 Pixel_Reset_5->GetXaxis()->CenterTitle(true);
 Pixel_Reset_5->GetXaxis()->SetTitleSize(20);
 Pixel_Reset_5->GetXaxis()->SetTitleFont(43);
@@ -216,4 +238,9 @@ Pixel_Reset_5->GetXaxis()->SetNdivisions(6);
 Pixel_Reset_5->Draw();
 c1->SaveAs("Pixel_Reset_5.pdf");
 c1->SaveAs("Pixel_Reset_5.png");  
+   
+FitFunc->SetParameter(1, Pixel_Reset_5->GetMean()); 
+Pixel_Reset_5->Fit("FitFunc", "E");  
+c1->SaveAs("Pixel_Reset_5_Fit.pdf");
+c1->SaveAs("Pixel_Reset_5_Fit.png");   
 }
