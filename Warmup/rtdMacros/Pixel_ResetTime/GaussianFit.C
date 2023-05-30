@@ -7,7 +7,7 @@
 Double_t Gaussian_fit(Double_t *v, Double_t *par) {
 
     //  create a fitting function for a Gaussian signal
-    
+// Par[1]=MeanValue, Par[2]=StandardDeviation    
     Double_t arg = 0;
     if (par[2] != 0)
         arg = (v[0] - par[1])/par[2];
