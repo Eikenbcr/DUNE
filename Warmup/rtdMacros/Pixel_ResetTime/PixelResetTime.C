@@ -18,8 +18,20 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
-TH1D * pix_res[0];   
-double tconv_pix_[0]; 
+ Int_t num = 0;
+void numReader() {
+TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
+TTreeReader reader("event_tree", f);
+TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
+TTreeReaderValue<Int_t> eventnum(reader, "event");
+ 
+ while (reader.Next()) {
+  if (*eventnum == 0.){
+ num = pix_x.GetSize();  
+ }}}
+ 
+TH1D * pix_res[num];   
+double tconv_pix_[num];     
 
  vector <double> mean(0);
  vector <double> rms(0);
@@ -36,20 +48,7 @@ void PixelResetTime::Begin(TTree * /*tree*/)
 
 void PixelResetTime::SlaveBegin(TTree * /*tree*/)
 {
-   TString option = GetOption();
- 
-TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
-TTreeReader reader("event_tree", f);
-TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
-TTreeReaderValue<Int_t> eventnum(reader, "event");
- 
- while (reader.Next()) {
-  if (*eventnum == 0.){
- num = pix_x.GetSize();  
- }}
- 
-//TH1D * pix_res[num];   
-//double tconv_pix_[num];           
+   TString option = GetOption();      
  
 std::cout << "number of active pixels: " << num << '\n'; 
  
