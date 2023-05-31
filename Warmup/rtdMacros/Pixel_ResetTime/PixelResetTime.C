@@ -27,7 +27,8 @@ TTreeReaderValue<Int_t> eventnum(reader, "event");
  
  while (reader.Next()) {
   if (*eventnum == 0.){
- num = pix_x.GetSize();  
+ num = pix_x.GetSize(); 
+std::cout << "number of active pixels: " << num << '\n';    
  }}}
  
 TH1D * pix_res[1];   
