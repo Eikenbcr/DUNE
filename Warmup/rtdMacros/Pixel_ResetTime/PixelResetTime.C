@@ -18,8 +18,8 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
-TH1D * pix_res[];   
-double tconv_pix_[]; 
+TH1D * pix_res[0];   
+double tconv_pix_[0]; 
 
  vector <double> mean(0);
  vector <double> rms(0);
