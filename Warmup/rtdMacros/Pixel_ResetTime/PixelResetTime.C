@@ -24,7 +24,7 @@ const int pix_num = 2612;
 TH1D * pix_res[pix_num];   
 double tconv_pix_[pix_num];     
 
-double mean[], rms[];
+double mean[0], rms[0];
 
 TString str;
 
