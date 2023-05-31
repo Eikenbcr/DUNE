@@ -20,9 +20,10 @@ TH1D * Pixel_Reset_5 = nullptr;
 
  TFile *file=new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root"); // opens the root file  
  TTree *tree=(TTree*)file->Get("event_tree"); // creates the TTree object
-const double num = tree->GetLeaf("pixel_x")->GetLen();
-std::cout << "number of active pixels in Event 1: " << pixel_x.GetSize() << '\n'; 
+const int num = tree->GetLeaf("pixel_x")->GetLen();
+std::cout << "number of active pixels: " << num << '\n'; 
 
+TString str;
 
 TH1D * pix_res[num];
 
