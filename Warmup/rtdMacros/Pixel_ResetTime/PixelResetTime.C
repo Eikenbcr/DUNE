@@ -22,7 +22,7 @@ TH1D * Pixel_Reset_5 = nullptr;
    TTreeReader myReader("event_tree", myFile);
    TTreeReaderArray<double> pix_x(myReader, "pixel_x");
 
-const num = pix_x.GetSize();
+const int num = pix_x.GetSize();
 TH1D *pix_res[num];
 
 TString str;
