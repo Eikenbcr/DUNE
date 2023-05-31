@@ -18,6 +18,9 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
+TH1D * pix_res[];   
+double tconv_pix_[]; 
+
  vector <double> mean(0);
  vector <double> rms(0);
  Int_t num = 0;
@@ -45,8 +48,8 @@ TTreeReaderValue<Int_t> eventnum(reader, "event");
  num = pix_x.GetSize();  
  }}
  
-TH1D * pix_res[num];   
-double tconv_pix_[num];           
+//TH1D * pix_res[num];   
+//double tconv_pix_[num];           
  
 std::cout << "number of active pixels: " << num << '\n'; 
  
