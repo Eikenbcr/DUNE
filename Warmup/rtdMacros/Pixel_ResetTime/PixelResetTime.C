@@ -275,7 +275,12 @@ c1->Clear();
   } 
  
 gr = new TGraph(pix_num,mean,rms);
-gr->Draw("ap");
+gr->GetXaxis()->SetRangeUser(450,550);
+gr->GetXaxis()->SetTitle("mean reset time [#mus]");   
+gr->GetYaxis()->SetRangeUser(0,2);   
+gr->GetYaxis()->SetTitle("rms [#mus]");  
+   
+   gr->Draw("ap");
  
 c1->SaveAs("Pixel_Reset_Scatterplot.pdf");
 c1->SaveAs("Pixel_Reset_Scatterplot.png");
