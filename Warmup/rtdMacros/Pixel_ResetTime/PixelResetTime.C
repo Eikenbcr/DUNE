@@ -35,7 +35,6 @@ double tconv_pix_[num];
 
  vector <double> mean(0);
  vector <double> rms(0);
- Int_t num = 0;
 
 TString str;
 
