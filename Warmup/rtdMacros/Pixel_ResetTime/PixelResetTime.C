@@ -24,7 +24,8 @@ TH1D * Pixel_Reset_5 = nullptr;
 
 const int num = pix_x.GetSize();
 TH1D *pix_res[200];
-
+ double t_pix[200];
+ 
 TString str;
 
 TCanvas * c1 = nullptr;
@@ -136,7 +137,7 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
                 Pixel_Reset_5->Fill(tconv_pix5);           
             }  
             
-                double t_pix[i] = (pixel_reset[i][j]) * 1e+6; 
+                t_pix[i] = (pixel_reset[i][j]) * 1e+6; 
                 pix_res[i]->Fill(t_pix[i]);
             
       }
