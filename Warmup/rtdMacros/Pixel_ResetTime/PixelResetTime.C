@@ -18,7 +18,7 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
-Int_t num = nullptr;
+Int_t num = 0;
 TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
 TTreeReader reader("event_tree", f);
 TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
