@@ -19,7 +19,7 @@ TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
 
-const double num = pixel_x.GetSize();
+const double num = event_tree->GetLeaf(pixel_x)->GetSize();
 TH1D * pix_res[num];
 
 TCanvas * c1 = nullptr;
