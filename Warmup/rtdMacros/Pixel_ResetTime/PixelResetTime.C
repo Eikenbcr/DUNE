@@ -30,8 +30,8 @@ TTreeReaderValue<Int_t> eventnum(reader, "event");
  num = pix_x.GetSize();  
  }}}
  
-TH1D * pix_res[num];   
-double tconv_pix_[num];     
+TH1D * pix_res[1];   
+double tconv_pix_[1];     
 
  vector <double> mean(0);
  vector <double> rms(0);
