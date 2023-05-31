@@ -260,24 +260,4 @@ FitFunc->Draw("SAME");
 c1->SaveAs("Pixel_Reset_5_Fit.pdf");
 c1->SaveAs("Pixel_Reset_5_Fit.png");
 c1->Clear(); 
-   
-pix_res[1]->GetXaxis()->CenterTitle(true);
-pix_res[1]->GetXaxis()->SetTitleSize(20);
-pix_res[1]->GetXaxis()->SetTitleFont(43);
-pix_res[1]->GetXaxis()->SetTitleOffset(1.5);
-pix_res[1]->GetXaxis()->SetLabelSize(0.05);
-pix_res[1]->GetYaxis()->SetTitleSize(20);
-pix_res[1]->GetYaxis()->SetTitleFont(43);
-pix_res[1]->GetYaxis()->SetLabelSize(0.05);
-pix_res[1]->GetXaxis()->SetRangeUser(PR5L,PR5H);
-pix_res[1]->GetXaxis()->SetNdivisions(6); 
-pix_res[1]->Draw();
-c1->SaveAs("pix_res_1.pdf");
-c1->SaveAs("pix_res_1.png");  
-FitFunc->SetParameter(1, pix_res[1]->GetRMS());      
-FitFunc->SetParameter(0, pix_res[1]->GetMean()); 
-FitFunc->Draw("SAME");  
-c1->SaveAs("pix_res_1_Fit.pdf");
-c1->SaveAs("pix_res_1_Fit.png");
-c1->Clear();      
 }
