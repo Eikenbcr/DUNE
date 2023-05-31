@@ -287,6 +287,7 @@ gr->GetXaxis()->SetLabelSize(0.05);
 gr->GetYaxis()->SetTitleSize(20);
 gr->GetYaxis()->SetTitleFont(43);
 gr->GetYaxis()->SetLabelSize(0.05);
+gr->SetTitle("");
    
    gr->Draw("ap");
  
