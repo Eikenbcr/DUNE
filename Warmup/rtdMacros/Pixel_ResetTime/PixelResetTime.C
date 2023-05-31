@@ -138,8 +138,8 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
                 Pixel_Reset_5->Fill(tconv_pix5);           
             }  
         
-tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
-pix_res[i]->Fill(tconv_pix_[i]);
+//tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
+//pix_res[i]->Fill(tconv_pix_[i]);
             
       }
          }
