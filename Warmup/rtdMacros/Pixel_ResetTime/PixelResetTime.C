@@ -18,18 +18,9 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
-Int_t num = 0;
-TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
-TTreeReader reader("event_tree", f);
-TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
- while (reader.Next()) {
- num = pix_x.GetSize();  
- }
-TH1D * pix_res[1];   
-double tconv_pix_[1];           
-
  vector <double> mean(0);
  vector <double> rms(0);
+ Int_t num = 0;
 
 TString str;
 
@@ -43,6 +34,17 @@ void PixelResetTime::Begin(TTree * /*tree*/)
 void PixelResetTime::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
+ 
+
+TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
+TTreeReader reader("event_tree", f);
+TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
+ while (reader.Next()) {
+ num = pix_x.GetSize();  
+ }
+TH1D * pix_res[1];   
+double tconv_pix_[1];           
+ 
 std::cout << "number of active pixels: " << num << '\n'; 
  
 Pixel_Reset_1 = new TH1D("qpixrtd events", "Pixel [300,7] Reset Frequency", 18000, 200, 2000);
