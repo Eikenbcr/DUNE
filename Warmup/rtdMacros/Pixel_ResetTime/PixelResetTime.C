@@ -18,6 +18,10 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
+
+const double num = pixel_x.GetSize();
+TH1D * pix_res[num];
+
 TCanvas * c1 = nullptr;
 
 void PixelResetTime::Begin(TTree * /*tree*/)
@@ -48,6 +52,14 @@ Pixel_Reset_4->GetYaxis()->SetTitle("Resets / (0.1 #mus)");
 Pixel_Reset_5 = new TH1D("qpixrtd events", "Pixel [300,500] Reset Frequency", 18000, 200, 2000);
 Pixel_Reset_5->GetXaxis()->SetTitle("time (#mus)");
 Pixel_Reset_5->GetYaxis()->SetTitle("Resets / (0.1 #mus)");     
+
+   for(int i = 0; i < num; ++i){
+       str.Form("%02d",i+1);
+      
+pix_res[i] = new TH1D("qpixrtd events", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
+pix_res[i]->GetXaxis()->SetTitle("time (#mus)");
+pix_res[i]->GetYaxis()->SetTitle("Resets / (0.1 #mus)");  
+   }   
    
 c1 = new TCanvas("canvas1", "Test Canvas1");   
 }
@@ -115,7 +127,11 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
             if (X_Val && Y_Val_5){
                 double tconv_pix5 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_5->Fill(tconv_pix5);           
-            }                  
+            }  
+            
+                double t_pix[i] = (pixel_reset[i][j]) * 1e+6; 
+                pix_res[i]->Fill(t_pix[i]);
+            
       }
          }
 }
@@ -247,5 +263,25 @@ FitFunc->SetParameter(0, Pixel_Reset_5->GetMean());
 FitFunc->Draw("SAME");  
 c1->SaveAs("Pixel_Reset_5_Fit.pdf");
 c1->SaveAs("Pixel_Reset_5_Fit.png");
-c1->Clear();   
+c1->Clear(); 
+   
+pix_res[1]->GetXaxis()->CenterTitle(true);
+pix_res[1]->GetXaxis()->SetTitleSize(20);
+pix_res[1]->GetXaxis()->SetTitleFont(43);
+pix_res[1]->GetXaxis()->SetTitleOffset(1.5);
+pix_res[1]->GetXaxis()->SetLabelSize(0.05);
+pix_res[1]->GetYaxis()->SetTitleSize(20);
+pix_res[1]->GetYaxis()->SetTitleFont(43);
+pix_res[1]->GetYaxis()->SetLabelSize(0.05);
+pix_res[1]->GetXaxis()->SetRangeUser(PR5L,PR5H);
+pix_res[1]->GetXaxis()->SetNdivisions(6); 
+pix_res[1]->Draw();
+c1->SaveAs("pix_res_1.pdf");
+c1->SaveAs("pix_res_1.png");  
+FitFunc->SetParameter(1, pix_res[1]->GetRMS());      
+FitFunc->SetParameter(0, pix_res[1]->GetMean()); 
+FitFunc->Draw("SAME");  
+c1->SaveAs("pix_res_1_Fit.pdf");
+c1->SaveAs("pix_res_1_Fit.png");
+c1->Clear();      
 }
