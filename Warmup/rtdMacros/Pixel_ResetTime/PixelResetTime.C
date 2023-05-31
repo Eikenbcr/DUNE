@@ -18,7 +18,7 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
  
-const int pix_num = 3000;
+const int pix_num = 2612;
 TH1D * pix_res[pix_num];   
 double tconv_pix_[pix_num];     
 
@@ -268,23 +268,16 @@ c1->SaveAs("Pixel_Reset_5_Fit.pdf");
 c1->SaveAs("Pixel_Reset_5_Fit.png");
 c1->Clear(); 
  
-pix_res[1]->GetXaxis()->CenterTitle(true);
-pix_res[1]->GetXaxis()->SetTitleSize(20);
-pix_res[1]->GetXaxis()->SetTitleFont(43);
-pix_res[1]->GetXaxis()->SetTitleOffset(1.5);
-pix_res[1]->GetXaxis()->SetLabelSize(0.05);
-pix_res[1]->GetYaxis()->SetTitleSize(20);
-pix_res[1]->GetYaxis()->SetTitleFont(43);
-pix_res[1]->GetYaxis()->SetLabelSize(0.05);
-pix_res[1]->GetXaxis()->SetRangeUser(PR5L,PR5H);
-pix_res[1]->GetXaxis()->SetNdivisions(6); 
-pix_res[1]->Draw();
-c1->SaveAs("pix_res_1.pdf");
-c1->SaveAs("pix_res_1.png");  
-FitFunc->SetParameter(1, pix_res[1]->GetRMS());      
-FitFunc->SetParameter(0, pix_res[1]->GetMean()); 
-FitFunc->Draw("SAME");  
-c1->SaveAs("pix_res_1_Fit.pdf");
-c1->SaveAs("pix_res_1_Fit.png");
-c1->Clear(); 
+  for (int i=0; i < pix_num; i++){ 
+  mean.push_back(pix_res[i]->GetMean());   
+  rms.push_back(pix_res[i]->GetRMS());      
+  } 
+ 
+TGraph *gr  = new TGraph(pix_num,mean,rms);
+gr->Draw("");
+ 
+c1->SaveAs("Pixel_Reset_Scatterplot.pdf");
+c1->SaveAs("Pixel_Reset_Scatterplot.png");
+
+ 
 }
