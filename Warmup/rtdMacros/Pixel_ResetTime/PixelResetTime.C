@@ -275,10 +275,18 @@ c1->Clear();
   } 
  
 gr = new TGraph(pix_num,mean,rms);
-gr->GetXaxis()->SetRangeUser(450,550);
+gr->GetXaxis()->SetRangeUser(480,510);
 gr->GetXaxis()->SetTitle("mean reset time [#mus]");   
 gr->GetYaxis()->SetRangeUser(0,2);   
 gr->GetYaxis()->SetTitle("rms [#mus]");  
+gr->GetXaxis()->CenterTitle(true);
+gr->GetXaxis()->SetTitleSize(20);
+gr->GetXaxis()->SetTitleFont(43);
+gr->GetXaxis()->SetTitleOffset(1.5);
+gr->GetXaxis()->SetLabelSize(0.05);
+gr->GetYaxis()->SetTitleSize(20);
+gr->GetYaxis()->SetTitleFont(43);
+gr->GetYaxis()->SetLabelSize(0.05);
    
    gr->Draw("ap");
  
