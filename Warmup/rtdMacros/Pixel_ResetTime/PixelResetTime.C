@@ -17,22 +17,10 @@ TH1D * Pixel_Reset_2 = nullptr;
 TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
-
- Int_t num = 0;
-void numReader() {
-TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
-TTreeReader reader("event_tree", f);
-TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
-TTreeReaderValue<Int_t> eventnum(reader, "event");
  
- while (reader.Next()) {
-  if (*eventnum == 0.){
- num = pix_x.GetSize(); 
-std::cout << "number of active pixels: " << num << '\n';    
- }}}
- 
-TH1D * pix_res[1];   
-double tconv_pix_[1];     
+const int pix_num = 3000;
+TH1D * pix_res[pix_num];   
+double tconv_pix_[pix_num];     
 
  vector <double> mean(0);
  vector <double> rms(0);
@@ -72,7 +60,7 @@ Pixel_Reset_5 = new TH1D("qpixrtd events", "Pixel [300,500] Reset Frequency", 18
 Pixel_Reset_5->GetXaxis()->SetTitle("time (#mus)");
 Pixel_Reset_5->GetYaxis()->SetTitle("Resets / (0.1 #mus)");     
 
-  for (int i=0; i < num; i++){ 
+  for (int i=0; i < pix_num; i++){ 
 str.Form("%02d",i+1);          
 pix_res[i] = new TH1D("qpixrtd events ["+str+"]", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
 pix_res[i]->GetXaxis()->SetTitle("time (#mus)");
