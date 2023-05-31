@@ -35,15 +35,18 @@ void PixelResetTime::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
  
-
 TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
 TTreeReader reader("event_tree", f);
 TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
+TTreeReaderValue<Int_t> eventnum(reader, "event");
+ 
  while (reader.Next()) {
+  if (eventnum == 0.){
  num = pix_x.GetSize();  
- }
-TH1D * pix_res[1];   
-double tconv_pix_[1];           
+ }}
+ 
+TH1D * pix_res[num];   
+double tconv_pix_[num];           
  
 std::cout << "number of active pixels: " << num << '\n'; 
  
@@ -69,7 +72,7 @@ Pixel_Reset_5->GetYaxis()->SetTitle("Resets / (0.1 #mus)");
 
   for (int i=0; i < num; i++){ 
 str.Form("%02d",i+1);          
-pix_res[i] = new TH1D("qpixrtd events", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
+pix_res[i] = new TH1D("qpixrtd events ["+str+"]", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
 pix_res[i]->GetXaxis()->SetTitle("time (#mus)");
 pix_res[i]->GetYaxis()->SetTitle("Resets / (0.1 #mus)");     
   }
@@ -142,8 +145,8 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
                 Pixel_Reset_5->Fill(tconv_pix5);           
             }  
         
-//tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
-//pix_res[i]->Fill(tconv_pix_[i]);
+tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
+pix_res[i]->Fill(tconv_pix_[i]);
             
       }
          }
@@ -276,5 +279,25 @@ FitFunc->SetParameter(0, Pixel_Reset_5->GetMean());
 FitFunc->Draw("SAME");  
 c1->SaveAs("Pixel_Reset_5_Fit.pdf");
 c1->SaveAs("Pixel_Reset_5_Fit.png");
+c1->Clear(); 
+ 
+pix_res[1]->GetXaxis()->CenterTitle(true);
+pix_res[1]->GetXaxis()->SetTitleSize(20);
+pix_res[1]->GetXaxis()->SetTitleFont(43);
+pix_res[1]->GetXaxis()->SetTitleOffset(1.5);
+pix_res[1]->GetXaxis()->SetLabelSize(0.05);
+pix_res[1]->GetYaxis()->SetTitleSize(20);
+pix_res[1]->GetYaxis()->SetTitleFont(43);
+pix_res[1]->GetYaxis()->SetLabelSize(0.05);
+pix_res[1]->GetXaxis()->SetRangeUser(PR5L,PR5H);
+pix_res[1]->GetXaxis()->SetNdivisions(6); 
+pix_res[1]->Draw();
+c1->SaveAs("pix_res_1.pdf");
+c1->SaveAs("pix_res_1.png");  
+FitFunc->SetParameter(1, pix_res[1]->GetRMS());      
+FitFunc->SetParameter(0, pix_res[1]->GetMean()); 
+FitFunc->Draw("SAME");  
+c1->SaveAs("pix_res_1_Fit.pdf");
+c1->SaveAs("pix_res_1_Fit.png");
 c1->Clear(); 
 }
