@@ -124,7 +124,8 @@ str.Form("%02d",i+1);
 pix_res[i] = new TH1D("qpixrtd events", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
 pix_res[i]->GetXaxis()->SetTitle("time (#mus)");
 pix_res[i]->GetYaxis()->SetTitle("Resets / (0.1 #mus)");             
-
+double tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
+pix_res[i]->Fill(tconv_pix_[i]);
             
       }
          }
