@@ -20,7 +20,7 @@ TH1D * Pixel_Reset_5 = nullptr;
 
  TFile *file=new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root"); // opens the root file  
  TTree *tree=(TTree*)file->Get("event_tree"); // creates the TTree object
-const int num = tree->GetLeaf("*pixel_x")->GetSize();
+const int num = *pixel_x.GetSize();
 
 TString str;
 
