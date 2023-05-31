@@ -21,7 +21,6 @@ TH1D * Pixel_Reset_5 = nullptr;
  TFile *file=new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root"); // opens the root file  
  TTree *tree=(TTree*)file->Get("event_tree"); // creates the TTree object
 const int num = tree->GetLeaf("pixel_x")->GetLen();
-std::cout << "number of active pixels: " << num << '\n'; 
 
 TString str;
 
@@ -38,6 +37,8 @@ void PixelResetTime::SlaveBegin(TTree * /*tree*/)
 {
    TString option = GetOption();
 
+std::cout << "number of active pixels: " << num << '\n'; 
+ 
 Pixel_Reset_1 = new TH1D("qpixrtd events", "Pixel [300,7] Reset Frequency", 18000, 200, 2000);
 Pixel_Reset_1->GetXaxis()->SetTitle("time (#mus)");
 Pixel_Reset_1->GetYaxis()->SetTitle("Resets / (0.1 #mus)");
