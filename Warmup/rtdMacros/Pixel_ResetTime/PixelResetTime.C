@@ -18,8 +18,13 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 
- TFile *file=new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root"); // opens the root file  
- TTree *tree=(TTree*)file->Get("event_tree"); // creates the TTree object
+ TFile *myFile = TFile::Open("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
+   TTreeReader myReader("event_tree", myFile);
+   TTreeReaderValue<Float_t> pix_x(myReader, "pixel_x");
+
+
+//TFile *file=new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root"); // opens the root file  
+// TTree *tree=(TTree*)file->Get("event_tree"); // creates the TTree object
 const int num = *pixel_x.GetSize();
 
 TString str;
