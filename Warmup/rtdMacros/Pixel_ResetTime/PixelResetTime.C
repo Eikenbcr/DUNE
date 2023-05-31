@@ -41,7 +41,7 @@ TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
 TTreeReaderValue<Int_t> eventnum(reader, "event");
  
  while (reader.Next()) {
-  if (eventnum == 0.){
+  if (*eventnum == 0.){
  num = pix_x.GetSize();  
  }}
  
