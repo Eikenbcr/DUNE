@@ -22,14 +22,10 @@ TH1D * Pixel_Reset_5 = nullptr;
    TTreeReader myReader("event_tree", myFile);
    TTreeReaderArray<double> pix_x(myReader, "pixel_x");
 
-
-//TFile *file=new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root"); // opens the root file  
-// TTree *tree=(TTree*)file->Get("event_tree"); // creates the TTree object
 const int num = pix_x.GetSize();
+TH1D *pix_res[num];
 
 TString str;
-
-TH1D * pix_res[num];
 
 TCanvas * c1 = nullptr;
 
