@@ -18,7 +18,8 @@ TH1D * Pixel_Reset_2 = nullptr;
 TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
- 
+TGraph * gr = nullptr;
+
 const int pix_num = 2612;
 TH1D * pix_res[pix_num];   
 double tconv_pix_[pix_num];     
@@ -274,7 +275,7 @@ c1->Clear();
   rms.push_back(pix_res[i]->GetRMS());      
   } 
  
-TGraph *gr  = new TGraph(pix_num,mean,rms);
+gr = new TGraph(pix_num,mean,rms);
 gr->Draw("");
  
 c1->SaveAs("Pixel_Reset_Scatterplot.pdf");
