@@ -275,7 +275,7 @@ c1->Clear();
   } 
  
 gr = new TGraph(pix_num,mean,rms);
-gr->Draw("");
+gr->Draw("ap");
  
 c1->SaveAs("Pixel_Reset_Scatterplot.pdf");
 c1->SaveAs("Pixel_Reset_Scatterplot.png");
