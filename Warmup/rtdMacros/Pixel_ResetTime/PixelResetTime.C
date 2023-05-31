@@ -270,8 +270,8 @@ c1->SaveAs("Pixel_Reset_5_Fit.png");
 c1->Clear(); 
  
   for (int i=0; i < pix_num; i++){ 
-  mean.push_back(pix_res[i]->GetMean());   
-  rms.push_back(pix_res[i]->GetRMS());      
+  mean[i] = pix_res[i]->GetMean();   
+  rms[0] =pix_res[i]->GetRMS();      
   } 
  
 gr = new TGraph(pix_num,mean,rms);
