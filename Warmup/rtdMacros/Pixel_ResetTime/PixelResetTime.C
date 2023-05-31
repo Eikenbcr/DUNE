@@ -11,6 +11,7 @@
 #include <TLine.h>
 #include <TH2.h>
 #include <TStyle.h>
+#include <TGraph.h>
 
 TH1D * Pixel_Reset_1 = nullptr;
 TH1D * Pixel_Reset_2 = nullptr;
