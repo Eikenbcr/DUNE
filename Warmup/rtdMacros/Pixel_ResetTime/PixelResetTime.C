@@ -17,7 +17,19 @@ TH1D * Pixel_Reset_2 = nullptr;
 TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
- 
+
+TFile *f = new TFile("/scratch/user/eikenbcr/DUNE/Warmup/muon_rtd.root");
+TTreeReader reader("event_tree", f);
+TTreeReaderArray<double_t> pix_x(reader, "pixel_x");
+reader.Next();
+Int_t num = pix_x.GetSize();  
+
+TH1D * pix_res[num];   
+double tconv_pix_[num];           
+
+ vector <double> mean(0);
+ vector <double> rms(0);
+
 TString str;
 
 TCanvas * c1 = nullptr;
@@ -50,7 +62,14 @@ Pixel_Reset_4->GetYaxis()->SetTitle("Resets / (0.1 #mus)");
 Pixel_Reset_5 = new TH1D("qpixrtd events", "Pixel [300,500] Reset Frequency", 18000, 200, 2000);
 Pixel_Reset_5->GetXaxis()->SetTitle("time (#mus)");
 Pixel_Reset_5->GetYaxis()->SetTitle("Resets / (0.1 #mus)");     
-   
+
+  for (int i=0; i < num; i++){ 
+str.Form("%02d",i+1);          
+pix_res[i] = new TH1D("qpixrtd events", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
+pix_res[i]->GetXaxis()->SetTitle("time (#mus)");
+pix_res[i]->GetYaxis()->SetTitle("Resets / (0.1 #mus)");     
+  }
+ 
 c1 = new TCanvas("canvas1", "Test Canvas1");   
 }
 
@@ -118,13 +137,7 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
                 double tconv_pix5 = (pixel_reset[i][j]) * 1e+6; 
                 Pixel_Reset_5->Fill(tconv_pix5);           
             }  
-
-TH1D * pix_res[i];   
-double tconv_pix_[i];          
-str.Form("%02d",i+1);          
-pix_res[i] = new TH1D("qpixrtd events", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
-pix_res[i]->GetXaxis()->SetTitle("time (#mus)");
-pix_res[i]->GetYaxis()->SetTitle("Resets / (0.1 #mus)");             
+        
 tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
 pix_res[i]->Fill(tconv_pix_[i]);
             
