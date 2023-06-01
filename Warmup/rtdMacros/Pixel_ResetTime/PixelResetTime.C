@@ -136,15 +136,15 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
 tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
 pix_res[i]->Fill(tconv_pix_[i]);
 
-            int n = 0;
+            int n3 = 0;
             if (pixel_reset[i].size() > 2.){
-               n = n + 1;
+               n3 = n3 + 1;
             }                
     
          }
          }
    
-   std::cout << "number of pixels in Event 1 with 3+ resets: " << n << '\n'; 
+   std::cout << "number of pixels in Event 1 with 3+ resets: " << n3 << '\n'; 
 }
             
 
