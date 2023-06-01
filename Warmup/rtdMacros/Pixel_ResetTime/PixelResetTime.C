@@ -21,6 +21,7 @@ TH1D * Pixel_Reset_5 = nullptr;
 TGraph * gr = nullptr;
 
 const int pix_num = 2612;
+int n3 = 0;
 TH1D * pix_res[pix_num];   
 double tconv_pix_[pix_num];     
 
@@ -136,7 +137,6 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
 tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
 pix_res[i]->Fill(tconv_pix_[i]);
 
-            int n3 = 0;
             if (pixel_reset[i].size() > 2.){
                n3 = n3 + 1;
             }                
