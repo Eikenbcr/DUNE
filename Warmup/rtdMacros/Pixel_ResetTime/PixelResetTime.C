@@ -19,13 +19,20 @@ TH1D * Pixel_Reset_3 = nullptr;
 TH1D * Pixel_Reset_4 = nullptr;
 TH1D * Pixel_Reset_5 = nullptr;
 TGraph * gr = nullptr;
+TGraph * gr3 = nullptr;
 
 const int pix_num = 2612;
+const int pix_num_3 = 1482;
+
 int n3 = 0;
+
 TH1D * pix_res[pix_num];   
 double tconv_pix_[pix_num];     
-
 double mean[pix_num], rms[pix_num];
+
+TH1D * pix_res_3[pix_num_3];   
+double tconv_pix_3[pix_num_3];     
+double mean_3[pix_num_3], rms_3[pix_num_3];
 
 TString str;
 
@@ -66,6 +73,13 @@ pix_res[i]->GetXaxis()->SetTitle("time (#mus)");
 pix_res[i]->GetYaxis()->SetTitle("Resets / (0.1 #mus)");     
   }
  
+  for (int i=0; i < pix_num_3; i++){ 
+str.Form("%02d",i+1);          
+pix_res_3[i] = new TH1D("qpixrtd events ["+str+"], res > 2", "Pixel ["+str+"]Reset Frequency", 18000, 200, 2000);
+pix_res_3[i]->GetXaxis()->SetTitle("time (#mus)");
+pix_res_3[i]->GetYaxis()->SetTitle("Resets / (0.1 #mus)");     
+  }   
+   
 c1 = new TCanvas("canvas1", "Test Canvas1");   
 }
 
@@ -136,7 +150,12 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
             
 tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
 pix_res[i]->Fill(tconv_pix_[i]);            
-    
+
+if (pixel_reset[i].size() > 2.){
+tconv_pix_3[i] = (pixel_reset[i][j]) * 1e+6; 
+pix_res_3[i]->Fill(tconv_pix_[i]);         
+   }                
+            
          }
          
 if (pixel_reset[i].size() > 2.){
@@ -297,11 +316,30 @@ gr->GetYaxis()->SetTitleFont(43);
 gr->GetYaxis()->SetLabelSize(0.05);
 gr->SetTitle("");
 gr->SetMarkerColor(4);
-gr->SetMarkerStyle( kFullDotMedium);   
+gr->SetMarkerStyle(kFullDotMedium);   
 gr->Draw("ap");
  
 c1->SaveAs("Pixel_Reset_Scatterplot.pdf");
 c1->SaveAs("Pixel_Reset_Scatterplot.png");
 
+gr3 = new TGraph(pix_num,mean,rms);
+gr3->GetXaxis()->SetRangeUser(480,510);
+gr3->GetXaxis()->SetTitle("mean reset time [#mus]");   
+gr3->GetYaxis()->SetRangeUser(0,2);   
+gr3->GetYaxis()->SetTitle("rms [#mus]");  
+gr3->GetXaxis()->CenterTitle(true);
+gr3->GetXaxis()->SetTitleSize(20);
+gr3->GetXaxis()->SetTitleFont(43);
+gr3->GetXaxis()->SetTitleOffset(1.5);
+gr3->GetXaxis()->SetLabelSize(0.05);
+gr3->GetYaxis()->SetTitleSize(20);
+gr3->GetYaxis()->SetTitleFont(43);
+gr3->GetYaxis()->SetLabelSize(0.05);
+gr3->SetTitle("");
+gr3->SetMarkerColor(4);
+gr3->SetMarkerStyle(kFullDotMedium);   
+gr3->Draw("ap");
  
+c1->SaveAs("Pixel_Reset_Scatterplot_Res3.pdf");
+c1->SaveAs("Pixel_Reset_Scatterplot_Res3.png");
 }
