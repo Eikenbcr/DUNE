@@ -136,7 +136,7 @@ std::cout << "number of pixels in Event 1: " << pixel_x.GetSize() << '\n';
 tconv_pix_[i] = (pixel_reset[i][j]) * 1e+6; 
 pix_res[i]->Fill(tconv_pix_[i]);
 
-            const int n = 0;
+            int n = 0;
             if (pixel_reset[i].size() > 2.){
                n = n + 1;
             }                
