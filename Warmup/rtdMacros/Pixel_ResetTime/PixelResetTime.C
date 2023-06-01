@@ -153,7 +153,7 @@ pix_res[i]->Fill(tconv_pix_[i]);
 
 if (pixel_reset[i].size() > 2.){
 tconv_pix_3[i] = (pixel_reset[i][j]) * 1e+6; 
-pix_res_3[i]->Fill(tconv_pix_[i]);         
+pix_res_3[i]->Fill(tconv_pix_3[i]);         
    }                
             
          }
@@ -317,12 +317,16 @@ gr->GetYaxis()->SetLabelSize(0.05);
 gr->SetTitle("");
 gr->SetMarkerColor(4);
 gr->SetMarkerStyle(kFullDotMedium);   
-gr->Draw("ap");
- 
+gr->Draw("ap"); 
 c1->SaveAs("Pixel_Reset_Scatterplot.pdf");
 c1->SaveAs("Pixel_Reset_Scatterplot.png");
 
-gr3 = new TGraph(pix_num,mean,rms);
+  for (int i=0; i < pix_num_3; i++){ 
+  mean_3[i] = pix_res_3[i]->GetMean();   
+  rms_3[i] =pix_res_3[i]->GetRMS();      
+  } 
+   
+gr3 = new TGraph(pix_num_3,mean_3,rms_3);
 gr3->GetXaxis()->SetRangeUser(480,510);
 gr3->GetXaxis()->SetTitle("mean reset time [#mus]");   
 gr3->GetYaxis()->SetRangeUser(0,2);   
