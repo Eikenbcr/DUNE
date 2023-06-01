@@ -292,8 +292,9 @@ gr->GetYaxis()->SetTitleSize(20);
 gr->GetYaxis()->SetTitleFont(43);
 gr->GetYaxis()->SetLabelSize(0.05);
 gr->SetTitle("");
-   
-   gr->Draw("ap");
+gr->SetMarkerColor(4);
+gr->SetMarkerStyle( kFullDotMedium);   
+gr->Draw("ap");
  
 c1->SaveAs("Pixel_Reset_Scatterplot.pdf");
 c1->SaveAs("Pixel_Reset_Scatterplot.png");
